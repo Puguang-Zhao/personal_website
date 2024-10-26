@@ -1,55 +1,83 @@
+/* 设置全局样式 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    background-color: #f7f8fa;
+    color: #333;
 }
 
 header {
-    background-color: #4CAF50;
-    padding: 20px;
+    background: #004a9f;
+    color: #fff;
+    padding: 1rem 0;
     text-align: center;
-    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+header.scrolled {
+    background: #003876;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 10px;
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 0.5rem;
 }
 
-nav ul li a {
+nav a {
+    color: #fff;
     text-decoration: none;
-    color: white;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f0f0f0;
 }
 
 main {
-    padding: 20px;
+    padding-top: 100px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    transition: transform 0.3s;
+}
+
+section:hover {
+    transform: translateY(-5px);
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    background: #004a9f;
+    color: #fff;
+    padding: 1rem 0;
 }
 
-.card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px 0;
+a.button {
+    background: #004a9f;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
     border-radius: 5px;
-    transition: transform 0.2s;
+    text-decoration: none;
+    transition: background 0.3s;
 }
 
-.card.expanded {
-    transform: scale(1.05);
-    background-color: #f0f0f0;
+a.button:hover {
+    background: #003876;
 }
