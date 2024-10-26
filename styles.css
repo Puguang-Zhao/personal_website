@@ -17,10 +17,12 @@ header {
 }
 
 footer {
+    background-color: #333;
     color: #ccc;
     padding: 15px;
-    position: fixed;
     width: 100%;
+    text-align: center;
+    position: relative; /* 改为相对定位 */
     bottom: 0;
 }
 #site-title {
@@ -86,6 +88,8 @@ nav ul li a:hover, nav ul li a.active {
     margin: auto;
     padding: 20px;
     padding-top: 80px; /* 留出导航栏的空间 */
+    min-height: calc(100vh - 120px); /* 确保内容区域至少占满视窗高度，避免被页脚遮挡 */
+    box-sizing: border-box;
 }
 
 /* 首页背景图片 */
@@ -221,4 +225,11 @@ body {
     .card h2, .card h3 {
         font-size: 1em;
     }
+}
+
+
+/* 联系方式字体调整 */
+.contact-info {
+    font-size: 1.5em; /* 增大字体 */
+    font-weight: bold;
 }
