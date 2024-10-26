@@ -5,11 +5,16 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 
-// 设置当前年份到页脚的 #year 元素
 document.addEventListener("DOMContentLoaded", function() {
+    // 设置当前年份
     document.getElementById("year").textContent = new Date().getFullYear();
+    // 初始化加载当前时间
+    updateDateTime();
+    // 每秒更新一次时间
+    setInterval(updateDateTime, 1000);
 });
 
+// 更新日期和时间显示
 function updateDateTime() {
     const now = new Date();
     const formattedDateTime = now.toLocaleString('zh-CN', {
@@ -23,8 +28,3 @@ function updateDateTime() {
     document.getElementById("datetime").textContent = formattedDateTime;
 }
 
-// 每秒更新一次时间
-setInterval(updateDateTime, 1000);
-
-// 初始化加载当前时间
-updateDateTime();
