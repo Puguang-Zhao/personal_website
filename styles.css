@@ -96,27 +96,26 @@ header p {
     margin: 0.5em 0;
 }
 
-/* 首页背景图片样式 */
-.hero {
-    position: relative;
-    height: 100vh;
-    background: url('药大背景.jpg') no-repeat center center/cover;
-    filter: blur(5px); /* 设置背景虚化程度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* 首页背景图片 */
+body {
+    background: url('path/to/your/background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.9; /* 控制图片透明度，不模糊 */
 }
 
-/* 为背景图片添加一个透明层 */
-.hero::before {
-    content: '';
-    position: absolute;
+/* 顶部的 ZPGuang 标题不透明 */
+#site-title {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* 可选，添加半透明的黑色遮罩 */
-    z-index: 1;
+    font-size: 2em;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+    z-index: 1000;
+    opacity: 1; /* 标题不透明 */
 }
 
 /* 内部文字样式 */
@@ -168,6 +167,7 @@ header p {
 }
 
 
+
 /* 卡片布局样式 */
 .resume-cards {
     display: grid;
@@ -183,9 +183,26 @@ header p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     color: #333;
+    position: relative; /* 为了添加装饰渐变 */
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* 渐变装饰背景 */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(173, 216, 230, 0.2), rgba(255, 250, 205, 0.2));
+    z-index: -1;
+    pointer-events: none; /* 确保不会影响卡片内容的交互 */
+}
+
+/* 标题样式 */
 .card h2 {
     font-size: 1.5em;
     color: #007bff;
@@ -198,6 +215,7 @@ header p {
     color: #333;
 }
 
+/* 内容文本样式 */
 .card p, .card ul {
     font-size: 1em;
     line-height: 1.6;
@@ -207,6 +225,7 @@ header p {
     padding-left: 20px;
 }
 
+/* 悬停效果 */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
