@@ -49,3 +49,25 @@ footer {
     margin: auto;
     padding: 20px;
 }
+
+/* 导航栏样式优化 */
+header {
+    background-color: #333; /* 深色背景 */
+    padding: 15px;
+}
+
+nav ul li a {
+    color: #ffeb3b; /* 黄色字体 */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffffff; /* 悬停时变白色 */
+}
+
+/* 使页面内容与导航栏分开 */
+.container {
+    padding-top: 20px;
+}
