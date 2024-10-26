@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-     <!-- 页面顶部的 ZPGuang 标题 -->
-     <div id="site-title">ZPGuang</div>
+    <!-- 固定在页面顶部的标题 -->
+    <div id="site-title">ZPGuang</div>
 
-    <header>
-        <div class="header-content">
-
-        </div>
+    <!-- 固定的导航栏 -->
+    <header class="home-header">
         <nav>
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
@@ -26,10 +24,66 @@
             </ul>
         </nav>
     </header>
-    <main class="container">
-        <section id="content" class="content">
 
-        </section>
+    <main class="container">
+           <!-- 卡片布局 -->
+           <section class="resume-cards">
+            <!-- 个人信息卡片 -->
+            <div class="card">
+                <h2>赵浦光</h2>
+                <p>性别：男</p>
+                <p>出生日期：2000-06-06</p>
+                <p>现居城市：江苏省-南京市</p>
+                <p>籍贯：河南省-周口市</p>
+                <p>电话：13271568090</p>
+                <p>邮箱：1124299376@qq.com</p>
+            </div>
+
+            <!-- 教育经历卡片 -->
+            <div class="card">
+                <h2>教育经历</h2>
+                <p>2022年09月—2025年06月，中国药科大学，中药资源学（学硕）（硕士）</p>
+                <p>2018年09月—2022年06月，中国药科大学，中药学（本科）</p>
+                <h3>主修课程</h3>
+                <p>中药学、基础化学、物理化学、有机化学、生物化学、波谱解析、色谱光谱分析、微生物学、药理学、中药药理等</p>
+            </div>
+
+            <!-- 研究方向卡片 -->
+            <div class="card">
+                <h2>研究方向</h2>
+                <p>2022年09月—至今，系统发育研究</p>
+                <p>硕士期间课题方向为生物信息，课题为萜类化合物合成通路中的基因在绿色植物中的起源与进化。</p>
+            </div>
+
+            <!-- 掌握技能卡片 -->
+            <div class="card">
+                <h2>掌握技能</h2>
+                <ul>
+                    <li>英语六级 (463)</li>
+                    <li>Linux系统、Python、R语言</li>
+                    <li>Adobe Illustrator、ChemDraw、SPSS、Geneious等</li>
+                    <li>植物DNA提取、核酸电泳、PCR扩增等实验技能</li>
+                </ul>
+            </div>
+
+            <!-- 科研成果卡片 -->
+            <div class="card">
+                <h2>科研成果</h2>
+                <ul>
+                    <li>参与香蒲活性指标测定，文章发表在 Front Plant Sci. 2023年5月</li>
+                    <li>参与Asparagales进化研究，文章返修中，发表在 Nat Commun.</li>
+                    <li>参与 Lobelia seguinii 基因组分析，文章返修中，发表在 Genomics.</li>
+                    <li>参与 Pontederia cordata L.基因组组装，文章返修中，发表在 DNA Res.</li>
+                </ul>
+            </div>
+
+            <!-- 自我评价卡片 -->
+            <div class="card">
+                <h2>自我评价</h2>
+                <p>我是一个责任心强、工作认真且注重细节的人，能够快速学习新知识，具备较强的团队协作能力、学习能力和解决问题的能力。</p>
+                <p>此外，我具有良好的沟通能力，能够有效协调团队工作，推动项目按时完成，热爱运动，如乒乓球、篮球等。</p>
+            </div>
+
     </main>
     <footer>
         <p>&copy; <span id="year"></span> Guang. All rights reserved.</p>

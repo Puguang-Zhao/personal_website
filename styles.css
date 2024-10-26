@@ -28,24 +28,19 @@ footer {
 #site-title {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     font-size: 2em;
     text-align: center;
     background-color: #333;
     color: white;
-    padding: 20px 0;
+    padding: 15px 0;
     z-index: 1000;
-    transition: font-size 0.5s ease, padding 0.5s ease;
 }
 
+/* 调整导航栏位置，使其不与 #site-title 重叠 */
 .home-header {
-    margin-top: 80px; /* 留出顶部标题的空间 */
-}
-
-/* 滚动时放大效果 */
-.scrolled #site-title {
-    font-size: 3em;
-    padding: 40px 0;
+    margin-top: 60px; /* 留出 #site-title 的高度 */
 }
 
 /* 导航栏样式 */
@@ -76,11 +71,7 @@ nav ul li a i {
     margin-right: 5px;
 }
 
-nav ul li a:hover {
-    color: #007bff;
-}
-
-nav ul li a.active {
+nav ul li a:hover, nav ul li a.active {
     color: #007bff;
     border-bottom: 3px solid #007bff;
     font-weight: bold;
@@ -174,4 +165,49 @@ header p {
     margin: 0;
     padding: 20px 0; /* 调整上下内边距，使其垂直居中 */
     line-height: 1; /* 确保文本没有多余的行高 */
+}
+
+
+/* 卡片布局样式 */
+.resume-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    margin-top: 15px;
+    color: #333;
+}
+
+.card p, .card ul {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.card ul {
+    padding-left: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
