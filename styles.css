@@ -31,28 +31,34 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
+    background-color: #f4f4f4;
 }
 
 nav ul li {
-    margin-right: 20px;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: #ffd700;
+    color: #333;
     font-weight: bold;
     text-decoration: none;
-    padding: 5px 10px;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 10px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a i {
+    margin-right: 5px; /* 图标与文字间距 */
 }
 
 nav ul li a:hover {
-    color: #ffffff;
+    color: #007bff; /* 悬停颜色 */
 }
 
 nav ul li a.active {
-    color: #ffffff;
-    background-color: #ffeb3b; /* 设置当前页面的背景色 */
-    border-radius: 5px; /* 圆角处理 */
+    color: #007bff; /* 当前页面高亮颜色 */
+    border-bottom: 3px solid #007bff; /* 下划线效果 */
 }
 
 /* 主内容区域 */
