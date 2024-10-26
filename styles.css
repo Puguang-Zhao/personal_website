@@ -38,19 +38,21 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #ffd700; /* 黄色字体 */
+    color: #ffd700;
     font-weight: bold;
     text-decoration: none;
-    transition: color 0.3s ease;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #ffffff; /* 悬停时变白色 */
+    color: #ffffff;
 }
 
 nav ul li a.active {
-    color: #ffeb3b; /* 当前页面高亮 */
-    border-bottom: 2px solid #ffeb3b;
+    color: #ffffff;
+    background-color: #ffeb3b; /* 设置当前页面的背景色 */
+    border-radius: 5px; /* 圆角处理 */
 }
 
 /* 主内容区域 */
