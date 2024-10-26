@@ -4,3 +4,9 @@ document.querySelectorAll('.card').forEach(card => {
         card.classList.toggle('expanded');
     });
 });
+
+// 设置当前年份到页脚的 #year 元素
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("year").textContent = new Date().getFullYear();
+});
+
