@@ -105,46 +105,40 @@ header p {
     margin: 0.5em 0;
 }
 
-/* 全屏背景图片样式 */
+/* 首页背景图片样式 */
 .hero {
     position: relative;
     height: 100vh;
-    background: url('your-background-image.jpg') no-repeat center center/cover;
+    background: url('药大背景.jpg') no-repeat center center/cover;
+    filter: blur(5px); /* 设置背景虚化程度 */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* 为背景图片添加一个透明层 */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* 可选，添加半透明的黑色遮罩 */
+    z-index: 1;
+}
+
+/* 内部文字样式 */
+.hero-text {
+    position: relative;
     color: white;
+    z-index: 2;
     text-align: center;
 }
 
-.hero-text {
-    max-width: 90%;
-    margin: 0 auto;
-    transform: scale(1);
-    transition: transform 1s ease;
-}
-
-.hero h1 {
+.hero-text h1 {
     font-size: 3.5em;
     margin: 0;
-}
-
-.scroll-down {
-    position: absolute;
-    bottom: 20px;
-    font-size: 2em;
-    color: white;
-    cursor: pointer;
-    animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
 }
 
 /* 滑动时内容显示样式 */
@@ -170,4 +164,14 @@ header p {
 .show-content .container p {
     opacity: 1;
     transform: scale(1.1);
+}
+
+/* 页面顶部的标题样式 */
+#site-title {
+    font-size: 2em;
+    text-align: center;
+    color: #333;
+    margin: 0;
+    padding: 20px 0; /* 调整上下内边距，使其垂直居中 */
+    line-height: 1; /* 确保文本没有多余的行高 */
 }
