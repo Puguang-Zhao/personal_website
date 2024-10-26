@@ -169,6 +169,8 @@ body {
 
 
 /* 卡片布局样式 */
+
+/* 通用样式：卡片布局 */
 .resume-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -177,6 +179,56 @@ body {
     margin: 0 auto;
 }
 
+/* 在移动设备上调整卡片布局 */
+@media (max-width: 768px) {
+    .resume-cards {
+        grid-template-columns: 1fr; /* 每行一列 */
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+        font-size: 0.9em; /* 缩小字体大小 */
+    }
+
+    .card h2 {
+        font-size: 1.3em; /* 缩小标题字体 */
+    }
+
+    .card h3 {
+        font-size: 1.1em;
+    }
+}
+
+/* 标题和字体调整 */
+.card h2 {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    margin-top: 15px;
+    color: #333;
+}
+
+/* 适应更小屏幕的卡片布局 */
+@media (max-width: 480px) {
+    .resume-cards {
+        padding: 5px;
+        gap: 10px;
+    }
+
+    .card {
+        padding: 10px;
+        font-size: 0.8em;
+    }
+
+    .card h2, .card h3 {
+        font-size: 1em;
+    }
+}
 .card {
     background-color: #fff;
     border-radius: 8px;
@@ -229,4 +281,13 @@ body {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* 手机屏幕上的标题调整 */
+@media (max-width: 768px) {
+    #site-title {
+        font-size: 1.5em; /* 缩小字体大小 */
+        padding: 10px 0;
+    }
 }
