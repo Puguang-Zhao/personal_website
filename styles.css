@@ -68,13 +68,16 @@ h2 {
     transform: scale(1.05);
 }
 
-/* 页脚样式 */
+/* 页脚固定在页面底部 */
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 1em 0;
+    position: relative;
+    width: 100%;
 }
+
 
 /* 响应式设计 */
 @media (max-width: 768px) {
@@ -91,3 +94,17 @@ footer {
         padding: 0 0.5em;
     }
 }
+
+/* 使页面主体撑满整个页面 */
+body, html {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* 主体内容设置为自适应高度 */
+main {
+    flex: 1;
+}
+
