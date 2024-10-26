@@ -28,3 +28,17 @@ function updateDateTime() {
     document.getElementById("datetime").textContent = formattedDateTime;
 }
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+// 加载 Markdown 文件并渲染到页面
+async function loadMarkdown() {
+    try {
+        const response = await fetch('content/resume.md');
+        const markdownText = await response.text();
+        document.getElementById('content').innerHTML = marked.parse(markdownText);
+    } catch (error) {
+        console.error("Error loading Markdown file:", error);
+    }
+}
+
+// 初始化
+loadMarkdown();
