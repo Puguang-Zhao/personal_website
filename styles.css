@@ -24,6 +24,30 @@ footer {
     bottom: 0;
 }
 
+/* 页面顶部的标题样式 */
+#site-title {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    z-index: 1000;
+    transition: font-size 0.5s ease, padding 0.5s ease;
+}
+
+.home-header {
+    margin-top: 80px; /* 留出顶部标题的空间 */
+}
+
+/* 滚动时放大效果 */
+.scrolled #site-title {
+    font-size: 3em;
+    padding: 40px 0;
+}
+
 /* 导航栏样式 */
 nav ul {
     list-style: none;
@@ -60,8 +84,6 @@ nav ul li a.active {
     color: #007bff;
     border-bottom: 3px solid #007bff;
     font-weight: bold;
-    background-color: rgba(0, 123, 255, 0.1);
-    border-radius: 5px;
 }
 
 
@@ -81,4 +103,71 @@ header h1 {
 
 header p {
     margin: 0.5em 0;
+}
+
+/* 全屏背景图片样式 */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('your-background-image.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-text {
+    max-width: 90%;
+    margin: 0 auto;
+    transform: scale(1);
+    transition: transform 1s ease;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin: 0;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 滑动时内容显示样式 */
+.content {
+    padding: 100px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.container h2 {
+    font-size: 2.5em;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.container p {
+    font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.show-content .container h2,
+.show-content .container p {
+    opacity: 1;
+    transform: scale(1.1);
 }

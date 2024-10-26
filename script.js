@@ -35,16 +35,6 @@ function updateDateTime() {
     document.getElementById("datetime").textContent = formattedDateTime;
 }
 
-// 加载 Markdown 文件并渲染到页面
-async function loadMarkdown() {
-    try {
-        const response = await fetch('content/resume.md');
-        const markdownText = await response.text();
-        document.getElementById('content').innerHTML = marked.parse(markdownText);
-    } catch (error) {
-        console.error("Error loading Markdown file:", error);
-    }
-}
 
 // 滚动时修改导航栏背景色
 function handleScroll() {
@@ -55,3 +45,13 @@ function handleScroll() {
         header.classList.remove('scrolled');
     }
 }
+
+// 滚动时放大标题
+window.addEventListener('scroll', () => {
+    const siteTitle = document.getElementById('site-title');
+    if (window.scrollY > 50) {
+        document.body.classList.add('scrolled');
+    } else {
+        document.body.classList.remove('scrolled');
+    }
+});
