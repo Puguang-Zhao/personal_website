@@ -1,25 +1,38 @@
 // 点击卡片展示更多信息
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
-        card.classList.toggle('expanded');
+        card.classList.toggle('expanded'); // 切换卡片的展开状态
     });
 });
 
-// 页面加载完成后执行
+// 页面加载完成后执行初始化操作
 document.addEventListener("DOMContentLoaded", function() {
     // 设置当前年份
-    document.getElementById("year").textContent = new Date().getFullYear();
-    // 初始化加载当前时间
+    setCurrentYear();
+
+    // 初始化并每秒更新当前时间
     updateDateTime();
-    // 每秒更新一次时间
     setInterval(updateDateTime, 1000);
     
-    // 加载 Markdown 文件
-    loadMarkdown();
+    // 如果需要加载 Markdown 文件内容，确保 loadMarkdown 函数存在
+    if (typeof loadMarkdown === 'function') {
+        loadMarkdown();
+    }
 
-    // 滚动时修改导航栏背景色
-    window.addEventListener('scroll', handleScroll);
+    // 滚动时修改导航栏和标题的样式
+    window.addEventListener('scroll', () => {
+        handleScroll();
+        handleTitleZoom();
+    });
 });
+
+// 设置当前年份
+function setCurrentYear() {
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
 
 // 更新日期和时间显示
 function updateDateTime() {
@@ -32,26 +45,33 @@ function updateDateTime() {
         minute: '2-digit',
         second: '2-digit'
     });
-    document.getElementById("datetime").textContent = formattedDateTime;
-}
 
+    const dateTimeElement = document.getElementById("datetime");
+    if (dateTimeElement) {
+        dateTimeElement.textContent = formattedDateTime;
+    }
+}
 
 // 滚动时修改导航栏背景色
 function handleScroll() {
     const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled'); // 增加滚动样式
+        } else {
+            header.classList.remove('scrolled'); // 移除滚动样式
+        }
     }
 }
 
 // 滚动时放大标题
-window.addEventListener('scroll', () => {
+function handleTitleZoom() {
     const siteTitle = document.getElementById('site-title');
-    if (window.scrollY > 50) {
-        document.body.classList.add('scrolled');
-    } else {
-        document.body.classList.remove('scrolled');
+    if (siteTitle) {
+        if (window.scrollY > 50) {
+            siteTitle.style.transform = "scale(1.1)"; // 放大标题
+        } else {
+            siteTitle.style.transform = "scale(1)"; // 恢复标题大小
+        }
     }
-});
+}

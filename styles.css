@@ -23,6 +23,9 @@ footer {
     width: 100%;
     bottom: 0;
 }
+#site-title {
+    transition: transform 0.3s ease; /* 平滑放大效果 */
+}
 
 /* 页面顶部的标题样式 */
 #site-title {
@@ -32,7 +35,7 @@ footer {
     width: 100%;
     font-size: 2em;
     text-align: center;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.9); /* 半透明背景 */
     color: white;
     padding: 15px 0;
     z-index: 1000;
@@ -77,7 +80,6 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
 }
 
-
 /* 主内容区域 */
 .container {
     max-width: 900px;
@@ -86,35 +88,14 @@ nav ul li a:hover, nav ul li a.active {
     padding-top: 80px; /* 留出导航栏的空间 */
 }
 
-/* 标题样式 */
-header h1 {
-    font-size: 2em;
-    margin: 0;
-}
-
-header p {
-    margin: 0.5em 0;
-}
-
 /* 首页背景图片 */
 body {
     background: url('path/to/your/background-image.jpg') no-repeat center center fixed;
     background-size: cover;
-    opacity: 0.9; /* 控制图片透明度，不模糊 */
 }
 
 /* 顶部的 ZPGuang 标题不透明 */
 #site-title {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 2em;
-    text-align: center;
-    background-color: #333;
-    color: white;
-    padding: 15px 0;
-    z-index: 1000;
     opacity: 1; /* 标题不透明 */
 }
 
@@ -131,43 +112,6 @@ body {
     margin: 0;
 }
 
-/* 滑动时内容显示样式 */
-.content {
-    padding: 100px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-.container h2 {
-    font-size: 2.5em;
-    opacity: 0;
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.container p {
-    font-size: 1.2em;
-    opacity: 0;
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.show-content .container h2,
-.show-content .container p {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-/* 页面顶部的标题样式 */
-#site-title {
-    font-size: 2em;
-    text-align: center;
-    color: #333;
-    margin: 0;
-    padding: 20px 0; /* 调整上下内边距，使其垂直居中 */
-    line-height: 1; /* 确保文本没有多余的行高 */
-}
-
-
-
 /* 卡片布局样式 */
 
 /* 通用样式：卡片布局 */
@@ -179,56 +123,7 @@ body {
     margin: 0 auto;
 }
 
-/* 在移动设备上调整卡片布局 */
-@media (max-width: 768px) {
-    .resume-cards {
-        grid-template-columns: 1fr; /* 每行一列 */
-        padding: 10px;
-    }
-
-    .card {
-        padding: 15px;
-        font-size: 0.9em; /* 缩小字体大小 */
-    }
-
-    .card h2 {
-        font-size: 1.3em; /* 缩小标题字体 */
-    }
-
-    .card h3 {
-        font-size: 1.1em;
-    }
-}
-
-/* 标题和字体调整 */
-.card h2 {
-    font-size: 1.5em;
-    color: #007bff;
-    margin-bottom: 10px;
-}
-
-.card h3 {
-    font-size: 1.2em;
-    margin-top: 15px;
-    color: #333;
-}
-
-/* 适应更小屏幕的卡片布局 */
-@media (max-width: 480px) {
-    .resume-cards {
-        padding: 5px;
-        gap: 10px;
-    }
-
-    .card {
-        padding: 10px;
-        font-size: 0.8em;
-    }
-
-    .card h2, .card h3 {
-        font-size: 1em;
-    }
-}
+/* 卡片样式 */
 .card {
     background-color: #fff;
     border-radius: 8px;
@@ -254,7 +149,7 @@ body {
     pointer-events: none; /* 确保不会影响卡片内容的交互 */
 }
 
-/* 标题样式 */
+/* 标题和字体调整 */
 .card h2 {
     font-size: 1.5em;
     color: #007bff;
@@ -283,11 +178,47 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* 在移动设备上调整卡片布局 */
+@media (max-width: 768px) {
+    .resume-cards {
+        grid-template-columns: 1fr; /* 每行一列 */
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+        font-size: 0.9em; /* 缩小字体大小 */
+    }
+
+    .card h2 {
+        font-size: 1.3em; /* 缩小标题字体 */
+    }
+
+    .card h3 {
+        font-size: 1.1em;
+    }
+}
 
 /* 手机屏幕上的标题调整 */
 @media (max-width: 768px) {
     #site-title {
         font-size: 1.5em; /* 缩小字体大小 */
         padding: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-cards {
+        padding: 5px;
+        gap: 10px;
+    }
+
+    .card {
+        padding: 10px;
+        font-size: 0.8em;
+    }
+
+    .card h2, .card h3 {
+        font-size: 1em;
     }
 }
