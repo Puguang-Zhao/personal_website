@@ -1,10 +1,11 @@
-/* Reset */
+/* 重置样式 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 基本页面设置 */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -12,16 +13,16 @@ body {
     line-height: 1.6;
 }
 
-/* Header */
+/* 头部样式 */
 header {
-    background-color: #333;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
     color: #fff;
     text-align: center;
-    padding: 1.5em 0;
+    padding: 2em 0;
 }
 
 header h1 {
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 0.5em;
 }
 
@@ -29,81 +30,64 @@ nav a {
     color: white;
     margin: 0 1em;
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav a:hover {
     text-decoration: underline;
 }
 
-/* Main Sections */
+/* 主体内容样式 */
+main {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
 section {
-    padding: 2em;
-    margin: 1em 0;
+    margin: 2em 0;
 }
 
 h2 {
-    font-size: 1.8em;
+    font-size: 2em;
     color: #333;
     margin-bottom: 0.5em;
 }
 
-#about p {
-    font-size: 1.1em;
-    color: #666;
-}
-
-.project {
+/* 卡片样式 */
+.card {
     background-color: #fff;
-    padding: 1em;
-    margin: 1em 0;
-    border-radius: 5px;
+    padding: 1.5em;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5em;
+    transition: transform 0.3s ease;
 }
 
-/* Footer */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* 页脚样式 */
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 1em 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
 
-/* 在屏幕宽度小于768px时，进行样式调整 */
+/* 响应式设计 */
 @media (max-width: 768px) {
-    /* 导航链接排列成垂直布局 */
+    header h1 {
+        font-size: 1.8em;
+    }
+
     nav a {
         display: block;
         margin: 0.5em 0;
     }
 
-    /* 调整字体大小 */
-    header h1 {
-        font-size: 1.5em;
-    }
-
-    /* 调整主内容的间距 */
-    section {
-        padding: 1em;
-    }
-}
-
-/* 在屏幕宽度小于480px时，进一步调整布局 */
-@media (max-width: 480px) {
-    /* 调整页面的整体字体大小 */
-    body {
-        font-size: 14px;
-    }
-
-    /* 调整页头字体 */
-    header h1 {
-        font-size: 1.2em;
-    }
-
-    /* 减小 padding */
-    section {
-        padding: 0.5em;
+    main {
+        padding: 0 0.5em;
     }
 }
