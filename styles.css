@@ -1,0 +1,109 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.5em 0;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+nav a {
+    color: white;
+    margin: 0 1em;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Sections */
+section {
+    padding: 2em;
+    margin: 1em 0;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+#about p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+.project {
+    background-color: #fff;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* 在屏幕宽度小于768px时，进行样式调整 */
+@media (max-width: 768px) {
+    /* 导航链接排列成垂直布局 */
+    nav a {
+        display: block;
+        margin: 0.5em 0;
+    }
+
+    /* 调整字体大小 */
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    /* 调整主内容的间距 */
+    section {
+        padding: 1em;
+    }
+}
+
+/* 在屏幕宽度小于480px时，进一步调整布局 */
+@media (max-width: 480px) {
+    /* 调整页面的整体字体大小 */
+    body {
+        font-size: 14px;
+    }
+
+    /* 调整页头字体 */
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    /* 减小 padding */
+    section {
+        padding: 0.5em;
+    }
+}
