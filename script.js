@@ -13,10 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
     updateDateTime();
     // 每秒更新一次时间
     setInterval(updateDateTime, 1000);
-    // 加载 Markdown 文件
-    loadMarkdown();
-    // 滚动时修改导航栏背景色
-    window.addEventListener('scroll', handleScroll);
 });
 
 // 更新日期和时间显示
