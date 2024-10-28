@@ -47,27 +47,32 @@
         const words = ["ZPGuang", "It is easy to say but hard to do"];
         let wordIndex = 0;
         let letterIndex = 0;
-        let currentWord = "";
         let isDeleting = false;
 
         function type() {
-            if (wordIndex < words.length) {
-                if (!isDeleting && letterIndex <= words[wordIndex].length) {
-                    currentWord = words[wordIndex].substring(0, letterIndex++);
-                    document.getElementById("typewriter").textContent = currentWord;
-                } else if (isDeleting && letterIndex >= 0) {
-                    currentWord = words[wordIndex].substring(0, letterIndex--);
-                    document.getElementById("typewriter").textContent = currentWord;
+            const currentWord = words[wordIndex];
+            const typewriterElement = document.getElementById("typewriter");
+
+            if (typewriterElement) {
+                // 判断是否删除字符
+                if (isDeleting) {
+                    typewriterElement.textContent = currentWord.substring(0, letterIndex--);
+                } else {
+                    typewriterElement.textContent = currentWord.substring(0, letterIndex++);
                 }
 
-                if (letterIndex === words[wordIndex].length) {
-                    isDeleting = true;
-                    setTimeout(type, 1000);  // 暂停后开始删除
-                } else if (letterIndex === 0 && isDeleting) {
+                // 控制打字和删除的速度
+                const typingSpeed = isDeleting ? 50 : 150;
+
+                // 字母数达到单词长度时暂停，准备删除
+                if (!isDeleting && letterIndex === currentWord.length) {
+                    setTimeout(() => isDeleting = true, 1000); // 暂停1秒后删除
+                } else if (isDeleting && letterIndex === 0) {
                     isDeleting = false;
-                    wordIndex = (wordIndex + 1) % words.length;
+                    wordIndex = (wordIndex + 1) % words.length; // 循环展示下一个词
                 }
-                setTimeout(type, isDeleting ? 50 : 200);
+
+                setTimeout(type, typingSpeed);
             }
         }
         document.addEventListener("DOMContentLoaded", type);
