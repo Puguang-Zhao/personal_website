@@ -82,6 +82,7 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
 }
 
+
 /* 主内容区域 */
 .container {
     max-width: 900px;
@@ -98,17 +99,6 @@ body.index-page {
     background-size: cover;
     opacity: 0.4; /* 透明度 40% */
 }
-
-/* 仅首页背景图片 */
-.hero {
-    background: url('images/药大背景.jpg') no-repeat center center;
-    background-size: cover;
-    opacity: 0.4; /* 设置透明度为40% */
-    min-height: 100vh; /* 使图片高度充满视窗 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
 
 /* 顶部的 ZPGuang 标题不透明 */
 #site-title {
