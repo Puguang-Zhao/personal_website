@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
         handleScroll();
         handleTitleZoom();
     });
+
+    // 仅在首页执行打字效果
+    if (document.querySelector('.hero-text')) {
+        startTypewriterEffect();
+    }
 });
 
 // 设置当前年份
@@ -73,5 +78,40 @@ function handleTitleZoom() {
         } else {
             siteTitle.style.transform = "scale(1)"; // 恢复标题大小
         }
+    }
+}
+
+// 打字效果函数
+function startTypewriterEffect() {
+    const words = ["ZPGuang", "It is easy to say but hard to do"];
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let isDeleting = false;
+    const typewriterElement = document.querySelector("#typewriter");
+
+    function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+            typewriterElement.textContent = currentWord.substring(0, letterIndex--);
+        } else {
+            typewriterElement.textContent = currentWord.substring(0, letterIndex++);
+        }
+
+        // 控制打字和删除速度
+        const speed = isDeleting ? 50 : 200;
+
+        if (!isDeleting && letterIndex === currentWord.length) {
+            setTimeout(() => isDeleting = true, 1000); // 暂停一秒后删除
+        } else if (isDeleting && letterIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length; // 切换到下一个词
+        }
+
+        setTimeout(type, speed);
+    }
+
+    if (typewriterElement) {
+        type();
     }
 }

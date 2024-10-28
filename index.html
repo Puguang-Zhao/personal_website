@@ -20,16 +20,15 @@
                 <li><a href="projects.html"><i class="fas fa-project-diagram"></i> 科研经历</a></li>
                 <li><a href="knowledge.html"><i class="fas fa-book"></i> 随笔</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> 联系我</a></li>
-                
             </ul>
         </nav>
     </header>
+
     <main class="container">
         <!-- 添加背景图片和文字的部分 -->
         <section class="hero">
             <div class="hero-text">
-                <h1>ZPGuang</h1>
-                <p>欢迎来到我的个人网站</p>
+                <h1 id="typewriter"></h1>
             </div>
         </section>
     
@@ -42,6 +41,36 @@
         <p>当前时间：<span id="datetime"></span></p>
     </footer>
     <script src="script.js"></script>
-    </body>
-    </html>
-    
+
+    <script>
+        // 打字效果
+        const words = ["ZPGuang", "It is easy to say but hard to do"];
+        let wordIndex = 0;
+        let letterIndex = 0;
+        let currentWord = "";
+        let isDeleting = false;
+
+        function type() {
+            if (wordIndex < words.length) {
+                if (!isDeleting && letterIndex <= words[wordIndex].length) {
+                    currentWord = words[wordIndex].substring(0, letterIndex++);
+                    document.getElementById("typewriter").textContent = currentWord;
+                } else if (isDeleting && letterIndex >= 0) {
+                    currentWord = words[wordIndex].substring(0, letterIndex--);
+                    document.getElementById("typewriter").textContent = currentWord;
+                }
+
+                if (letterIndex === words[wordIndex].length) {
+                    isDeleting = true;
+                    setTimeout(type, 1000);  // 暂停后开始删除
+                } else if (letterIndex === 0 && isDeleting) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+                setTimeout(type, isDeleting ? 50 : 200);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", type);
+    </script>
+</body>
+</html>
