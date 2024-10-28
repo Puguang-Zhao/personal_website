@@ -93,6 +93,9 @@ function typeWriter(elementId, text) {
     const typewriterElement = document.getElementById(elementId);
     let letterIndex = 0;
     let isDeleting = false;
+    const typingSpeed = 150;
+    const deletingSpeed = 100;
+    const pauseAfterComplete = 2000; // 打印完成后的暂停时间
 
     function type() {
         if (typewriterElement) {
@@ -102,14 +105,15 @@ function typeWriter(elementId, text) {
                 typewriterElement.textContent = text.substring(0, letterIndex++);
             }
 
-            const speed = isDeleting ? 100 : 150;
+            // 控制打字和删除速度
+            const speed = isDeleting ? deletingSpeed : typingSpeed;
 
             if (!isDeleting && letterIndex === text.length) {
-                setTimeout(() => isDeleting = true, 1000); // 暂停一秒后删除
+                // 完成打字后暂停一段时间再进入删除
+                setTimeout(() => isDeleting = true, pauseAfterComplete);
             } else if (isDeleting && letterIndex === 0) {
+                // 完成删除后重新开始打字
                 isDeleting = false;
-                setTimeout(type, 1000); // 重置打字效果，开始新循环
-                return;
             }
 
             setTimeout(type, speed);
