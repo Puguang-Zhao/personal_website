@@ -45,6 +45,7 @@ footer {
     z-index: 1000;
 }
 
+
 /* 调整导航栏位置 */
 .home-header {
     margin-top: 60px;
@@ -85,15 +86,16 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
 }
 
-/* 主内容区域 */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-top: 80px;
-    min-height: calc(100vh - 120px);
-    box-sizing: border-box;
+
+/* 主内容区域，确保导航栏在最上层 */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    overflow: hidden;
+    z-index: 10; /* 确保在背景层之上 */
 }
 
 /* 首页背景图片透明层 */
@@ -113,14 +115,13 @@ nav ul li a:hover, nav ul li a.active {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: url('药大背景.jpg') no-repeat center center fixed;
     background-size: cover;
     opacity: 0.3;
-    z-index: 1;
+    z-index: -1; /* 确保背景在文本层之下 */
 }
-
 .hero-text {
     position: relative;
     text-align: center;
@@ -134,9 +135,7 @@ nav ul li a:hover, nav ul li a.active {
     background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffdd93);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 /* 卡片布局样式 */
