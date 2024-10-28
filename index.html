@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body class="index-page">
     <!-- 固定在页面顶部的标题 -->
     <div id="site-title">ZPGuang</div>
 
@@ -28,7 +28,8 @@
         <!-- 添加背景图片和文字的部分 -->
         <section class="hero">
             <div class="hero-text">
-                <h1 id="typewriter"></h1>
+                <h1 id="typewriter-primary"></h1>
+                <h2 id="typewriter-secondary"></h2>
             </div>
         </section>
     
@@ -43,34 +44,42 @@
     <script src="script.js"></script>
 
     <script>
-        // 打字效果
-        const words = ["ZPGuang", "It is easy to say but hard to do"];
+        // 打字效果配置
+        const primaryWords = ["ZPGuang"];
+        const secondaryWords = ["It is easy to say but hard to do"];
         let wordIndex = 0;
         let letterIndex = 0;
-        let currentWord = "";
         let isDeleting = false;
 
-        function type() {
-            if (wordIndex < words.length) {
-                if (!isDeleting && letterIndex <= words[wordIndex].length) {
-                    currentWord = words[wordIndex].substring(0, letterIndex++);
-                    document.getElementById("typewriter").textContent = currentWord;
-                } else if (isDeleting && letterIndex >= 0) {
-                    currentWord = words[wordIndex].substring(0, letterIndex--);
-                    document.getElementById("typewriter").textContent = currentWord;
-                }
+        // 主标题和副标题的打字效果
+        function typeEffect(elementId, wordsArray, delay) {
+            const element = document.getElementById(elementId);
+            const currentWord = wordsArray[wordIndex];
 
-                if (letterIndex === words[wordIndex].length) {
-                    isDeleting = true;
-                    setTimeout(type, 1000);  // 暂停后开始删除
-                } else if (letterIndex === 0 && isDeleting) {
-                    isDeleting = false;
-                    wordIndex = (wordIndex + 1) % words.length;
-                }
-                setTimeout(type, isDeleting ? 50 : 200);
+            if (isDeleting) {
+                element.textContent = currentWord.substring(0, letterIndex--);
+            } else {
+                element.textContent = currentWord.substring(0, letterIndex++);
             }
+
+            // 控制打字和删除速度
+            const speed = isDeleting ? 50 : 200;
+
+            if (!isDeleting && letterIndex === currentWord.length) {
+                setTimeout(() => isDeleting = true, 1000); // 暂停一秒后开始删除
+            } else if (isDeleting && letterIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % wordsArray.length; // 切换到下一个词
+            }
+
+            setTimeout(() => typeEffect(elementId, wordsArray, delay), speed);
         }
-        document.addEventListener("DOMContentLoaded", type);
+
+        // 初始化打字效果
+        document.addEventListener("DOMContentLoaded", () => {
+            typeEffect("typewriter-primary", primaryWords, 0);
+            setTimeout(() => typeEffect("typewriter-secondary", secondaryWords, 2000), 500); // 延迟副标题出现
+        });
     </script>
 </body>
 </html>

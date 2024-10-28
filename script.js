@@ -81,37 +81,38 @@ function handleTitleZoom() {
     }
 }
 
-// 打字效果函数
+// 打字效果函数 - 支持两行文本
 function startTypewriterEffect() {
-    const words = ["ZPGuang", "It is easy to say but hard to do"];
-    let wordIndex = 0;
-    let letterIndex = 0;
-    let isDeleting = false;
-    const typewriterElement = document.querySelector("#typewriter");
+    const words = [
+        { elementId: "title-text", text: "ZPGuang" },
+        { elementId: "subtitle-text", text: "It is easy to say but hard to do" }
+    ];
+    let wordIndex = 0, letterIndex = 0, isDeleting = false;
 
     function type() {
         const currentWord = words[wordIndex];
-        
-        if (isDeleting) {
-            typewriterElement.textContent = currentWord.substring(0, letterIndex--);
-        } else {
-            typewriterElement.textContent = currentWord.substring(0, letterIndex++);
+        const typewriterElement = document.getElementById(currentWord.elementId);
+
+        if (typewriterElement) {
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.text.substring(0, letterIndex--);
+            } else {
+                typewriterElement.textContent = currentWord.text.substring(0, letterIndex++);
+            }
+
+            // 控制打字和删除速度
+            const speed = isDeleting ? 50 : 200;
+
+            if (!isDeleting && letterIndex === currentWord.text.length) {
+                setTimeout(() => isDeleting = true, 1000); // 暂停一秒后删除
+            } else if (isDeleting && letterIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length; // 切换到下一个词
+            }
+
+            setTimeout(type, speed);
         }
-
-        // 控制打字和删除速度
-        const speed = isDeleting ? 50 : 200;
-
-        if (!isDeleting && letterIndex === currentWord.length) {
-            setTimeout(() => isDeleting = true, 1000); // 暂停一秒后删除
-        } else if (isDeleting && letterIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length; // 切换到下一个词
-        }
-
-        setTimeout(type, speed);
     }
 
-    if (typewriterElement) {
-        type();
-    }
+    type();
 }
