@@ -150,11 +150,13 @@ nav ul li a:hover, nav ul li a.active {
 /* 卡片布局样式 */
 .resume-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 增加最小宽度为 350px */
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
+    max-width: 1200px; /* 增加最大宽度限制，避免内容过宽 */
 }
+
 
 .card {
     background-color: #fff;
@@ -183,10 +185,16 @@ nav ul li a:hover, nav ul li a.active {
 
 /* 卡片标题和内容样式 */
 .card h2 {
-    font-size: 1.5em;
+    font-size: 1.8em; /* 增大标题字体 */
     color: #007bff;
     margin-bottom: 10px;
 }
+
+.card p, .card ul {
+    font-size: 1.1em; /* 增大卡片内容字体 */
+    line-height: 1.6;
+}
+
 
 .card h3 {
     font-size: 1.2em;
@@ -194,10 +202,7 @@ nav ul li a:hover, nav ul li a.active {
     color: #333;
 }
 
-.card p, .card ul {
-    font-size: 1em;
-    line-height: 1.6;
-}
+
 
 .card ul {
     padding-left: 20px;
@@ -207,6 +212,16 @@ nav ul li a:hover, nav ul li a.active {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+#卡片错落排列
+.card:nth-child(odd) {
+    transform: translateY(10px); /* 使奇数卡片稍微向下偏移 */
+}
+
+.card:nth-child(even) {
+    transform: translateY(-10px); /* 使偶数卡片稍微向上偏移 */
+}
+
 
 /* 移动设备上的调整 */
 @media (max-width: 768px) {
