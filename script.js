@@ -83,14 +83,12 @@ function handleTitleZoom() {
 
 // 打字效果函数 - 支持两行文本
 function startTypewriterEffect() {
-    const words = [
-        { elementId: "title-text", text: "ZPGuang" },
-        { elementId: "subtitle-text", text: "It is easy to say but hard to do" }
-    ];
-
-    words.forEach((word, index) => {
-        typeWriter(word.elementId, word.text, index * 2000); // 延迟副标题的出现
-    });
+    const primary = { elementId: "typewriter-primary", text: "ZPGuang" };
+    const secondary = { elementId: "typewriter-secondary", text: "It is easy to say but hard to do" };
+    
+    // 启动主副标题的打字效果
+    typeWriter(primary.elementId, primary.text, 0);
+    typeWriter(secondary.elementId, secondary.text, 2000); // 延迟副标题的打字效果
 }
 
 // 通用的打字效果函数
@@ -107,13 +105,13 @@ function typeWriter(elementId, text, delay) {
                 typewriterElement.textContent = text.substring(0, letterIndex++);
             }
 
-            const speed = isDeleting ? 50 : 200;
+            const speed = isDeleting ? 100 : 150;
 
             if (!isDeleting && letterIndex === text.length) {
-                setTimeout(() => isDeleting = true, 1000);
+                setTimeout(() => isDeleting = true, 1000); // 暂停一秒后删除
             } else if (isDeleting && letterIndex === 0) {
                 isDeleting = false;
-                setTimeout(type, delay); // 重置打字效果
+                setTimeout(type, delay); // 重置打字效果，开始新循环
                 return;
             }
 
