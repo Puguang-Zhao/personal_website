@@ -94,8 +94,7 @@ nav ul li a:hover, nav ul li a.active {
 
 /* 首页背景图片 */
 body.index-page {
-    background: url('药大背景.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: none; /* 不使用body的背景设置 */
 }
 
 /* 首页背景图片透明层 */
@@ -146,7 +145,7 @@ body.index-page {
     overflow: hidden;
     white-space: nowrap;
     border-right: 0.15em solid white;
-    animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+    animation: typing 4s steps(40, end), blink 0.75s step-end infinite alternate;
 }
 
 .typewriter-text {
