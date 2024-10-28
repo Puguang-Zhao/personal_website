@@ -94,7 +94,7 @@ nav ul li a:hover, nav ul li a.active {
 
 /* 首页背景图片 */
 body {
-    background: url('path/to/your/background-image.jpg') no-repeat center center fixed;
+    background: url('药大背景.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
