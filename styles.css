@@ -137,16 +137,6 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 
-/* 打字效果和闪烁 */
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink {
-    50% { border-color: transparent; }
-}
-
 
 
 /* 卡片布局样式 */
