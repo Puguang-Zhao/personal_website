@@ -188,3 +188,9 @@ nav ul li a:hover, nav ul li a.active {
         font-size: 1.1em;
     }
 }
+
+/* 联系方式字体调整 */
+.contact-info {
+    font-size: 1.5em;
+    font-weight: bold;
+}
