@@ -122,3 +122,4 @@ function typeWriter(elementId, text) {
 
     type(); // 开始打字效果
 }
+

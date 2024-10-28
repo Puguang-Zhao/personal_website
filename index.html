@@ -45,7 +45,7 @@
     <script>
         // 打字效果配置
         const secondaryWords = ["It is easy to say but hard to do"];
-        const typeSpeeds = { typing: 150, deleting: 100, delay: 1000 }; // 打字与删除速度配置
+        const typeSpeeds = { typing: 150, deleting: 100, delay: 1500 }; // 打字与删除速度配置
 
         // 通用打字效果函数
         function typeEffect(elementId, words, speedConfig, delay = 0) {
@@ -65,7 +65,7 @@
                 const speed = isDeleting ? speedConfig.deleting : speedConfig.typing;
 
                 if (!isDeleting && letterIndex === currentWord.length) {
-                    setTimeout(() => isDeleting = true, speedConfig.delay);
+                    setTimeout(() => isDeleting = true, speedConfig.delay); // 等待后开始删除
                 } else if (isDeleting && letterIndex === 0) {
                     isDeleting = false;
                     wordIndex = (wordIndex + 1) % words.length;
