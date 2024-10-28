@@ -83,7 +83,7 @@ function handleTitleZoom() {
 
 // 单行打字效果函数
 function startTypewriterEffect() {
-    const text = "It is easy to say but hard to do"; // 需要展示的文本
+    const text = "It is easy to say but hard to do"; // 显示的文本
     const elementId = "typewriter-text"; // 打字效果目标元素的ID
     typeWriter(elementId, text);
 }
@@ -93,27 +93,24 @@ function typeWriter(elementId, text) {
     const typewriterElement = document.getElementById(elementId);
     let letterIndex = 0;
     let isDeleting = false;
-    const typingSpeed = 150;
-    const deletingSpeed = 100;
-    const pauseAfterComplete = 2000; // 打印完成后的暂停时间
 
     function type() {
         if (typewriterElement) {
-            if (isDeleting) {
-                typewriterElement.textContent = text.substring(0, letterIndex--);
-            } else {
+            if (!isDeleting && letterIndex <= text.length) {
                 typewriterElement.textContent = text.substring(0, letterIndex++);
+            } else if (isDeleting && letterIndex >= 0) {
+                typewriterElement.textContent = text.substring(0, letterIndex--);
             }
 
-            // 控制打字和删除速度
-            const speed = isDeleting ? deletingSpeed : typingSpeed;
+            const speed = isDeleting ? 100 : 150;
 
+            // 检查是否完成了整个文本
             if (!isDeleting && letterIndex === text.length) {
-                // 完成打字后暂停一段时间再进入删除
-                setTimeout(() => isDeleting = true, pauseAfterComplete);
+                setTimeout(() => isDeleting = true, 1500); // 暂停1.5秒再开始删除
             } else if (isDeleting && letterIndex === 0) {
-                // 完成删除后重新开始打字
                 isDeleting = false;
+                setTimeout(type, 1000); // 重置打字效果，开始新循环
+                return;
             }
 
             setTimeout(type, speed);
