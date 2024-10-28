@@ -122,17 +122,20 @@ nav ul li a:hover, nav ul li a.active {
     z-index: 2;
 }
 
-/* 副标题样式 */
+/* 副标题样式带渐变和打字效果 */
 #typewriter-secondary {
-    font-size: 1.5em;
-    color: white;
-    margin-top: 0.5em;
+    font-size: 2.5em;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ffafbd, #ffc3a0, #fbc2eb, #a6c1ee); /* 淡雅彩色渐变 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 0.1em solid white;
+    border-right: 0.1em solid rgba(255, 255, 255, 0.75);
     animation: typing 4s steps(30, end) infinite alternate, blink 0.75s step-end infinite;
 }
 
+/* 打字效果动画 */
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
