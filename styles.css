@@ -96,49 +96,6 @@ nav ul li a:hover, nav ul li a.active {
     box-sizing: border-box;
 }
 
-/* 首页背景图片透明层 */
-.index-page .hero {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    overflow: hidden;
-}
-
-.index-page .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url('药大背景.jpg') no-repeat center center fixed;
-    background-size: cover;
-    opacity: 0.3;
-    z-index: 1;
-}
-
-.hero-text {
-    position: relative;
-    text-align: center;
-    z-index: 2;
-}
-
-/* 副标题样式 */
-#typewriter-text {
-    font-size: 5em;
-    font-weight: bold;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffdd93);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 /* 卡片布局样式 */
 .resume-cards {
     display: grid;
@@ -230,10 +187,4 @@ nav ul li a:hover, nav ul li a.active {
     .card h3 {
         font-size: 1.1em;
     }
-}
-
-/* 联系方式字体调整 */
-.contact-info {
-    font-size: 1.5em;
-    font-weight: bold;
 }
