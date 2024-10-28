@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 初始化并每秒更新当前时间
     updateDateTime();
     setInterval(updateDateTime, 1000);
-    
+
     // 如果需要加载 Markdown 文件内容，确保 loadMarkdown 函数存在
     if (typeof loadMarkdown === 'function') {
         loadMarkdown();

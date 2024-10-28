@@ -28,7 +28,6 @@
         <!-- 添加背景图片和文字的部分 -->
         <section class="hero">
             <div class="hero-text">
-                <h1 id="typewriter-primary"></h1>
                 <h2 id="typewriter-secondary"></h2>
             </div>
         </section>
@@ -45,7 +44,6 @@
 
     <script>
         // 打字效果配置
-        const primaryWords = ["ZPGuang"];
         const secondaryWords = ["It is easy to say but hard to do"];
         const typeSpeeds = { typing: 150, deleting: 100, delay: 1000 }; // 打字与删除速度配置
 
@@ -64,7 +62,6 @@
                     element.textContent = currentWord.substring(0, letterIndex++);
                 }
 
-                // 控制打字和删除速度
                 const speed = isDeleting ? speedConfig.deleting : speedConfig.typing;
 
                 if (!isDeleting && letterIndex === currentWord.length) {
@@ -82,8 +79,7 @@
 
         // 初始化打字效果
         document.addEventListener("DOMContentLoaded", () => {
-            typeEffect("typewriter-primary", primaryWords, typeSpeeds);
-            typeEffect("typewriter-secondary", secondaryWords, typeSpeeds, 2000); // 延迟副标题
+            typeEffect("typewriter-secondary", secondaryWords, typeSpeeds, 2000); // 仅显示副标题
         });
     </script>
 </body>
