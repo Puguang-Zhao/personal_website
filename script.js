@@ -87,32 +87,39 @@ function startTypewriterEffect() {
         { elementId: "title-text", text: "ZPGuang" },
         { elementId: "subtitle-text", text: "It is easy to say but hard to do" }
     ];
-    let wordIndex = 0, letterIndex = 0, isDeleting = false;
+
+    words.forEach((word, index) => {
+        typeWriter(word.elementId, word.text, index * 2000); // 延迟副标题的出现
+    });
+}
+
+// 通用的打字效果函数
+function typeWriter(elementId, text, delay) {
+    const typewriterElement = document.getElementById(elementId);
+    let letterIndex = 0;
+    let isDeleting = false;
 
     function type() {
-        const currentWord = words[wordIndex];
-        const typewriterElement = document.getElementById(currentWord.elementId);
-
         if (typewriterElement) {
             if (isDeleting) {
-                typewriterElement.textContent = currentWord.text.substring(0, letterIndex--);
+                typewriterElement.textContent = text.substring(0, letterIndex--);
             } else {
-                typewriterElement.textContent = currentWord.text.substring(0, letterIndex++);
+                typewriterElement.textContent = text.substring(0, letterIndex++);
             }
 
-            // 控制打字和删除速度
             const speed = isDeleting ? 50 : 200;
 
-            if (!isDeleting && letterIndex === currentWord.text.length) {
-                setTimeout(() => isDeleting = true, 1000); // 暂停一秒后删除
+            if (!isDeleting && letterIndex === text.length) {
+                setTimeout(() => isDeleting = true, 1000);
             } else if (isDeleting && letterIndex === 0) {
                 isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length; // 切换到下一个词
+                setTimeout(type, delay); // 重置打字效果
+                return;
             }
 
             setTimeout(type, speed);
         }
     }
 
-    type();
+    setTimeout(type, delay);
 }

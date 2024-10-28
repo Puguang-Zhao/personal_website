@@ -47,38 +47,63 @@
         // 打字效果配置
         const primaryWords = ["ZPGuang"];
         const secondaryWords = ["It is easy to say but hard to do"];
-        let wordIndex = 0;
-        let letterIndex = 0;
-        let isDeleting = false;
+        let wordIndexPrimary = 0;
+        let wordIndexSecondary = 0;
+        let letterIndexPrimary = 0;
+        let letterIndexSecondary = 0;
+        let isDeletingPrimary = false;
+        let isDeletingSecondary = false;
 
-        // 主标题和副标题的打字效果
-        function typeEffect(elementId, wordsArray, delay) {
-            const element = document.getElementById(elementId);
-            const currentWord = wordsArray[wordIndex];
+        // 主标题打字效果
+        function typeEffectPrimary() {
+            const element = document.getElementById("typewriter-primary");
+            const currentWord = primaryWords[wordIndexPrimary];
 
-            if (isDeleting) {
-                element.textContent = currentWord.substring(0, letterIndex--);
+            if (isDeletingPrimary) {
+                element.textContent = currentWord.substring(0, letterIndexPrimary--);
             } else {
-                element.textContent = currentWord.substring(0, letterIndex++);
+                element.textContent = currentWord.substring(0, letterIndexPrimary++);
             }
 
-            // 控制打字和删除速度
-            const speed = isDeleting ? 50 : 200;
+            const speedPrimary = isDeletingPrimary ? 50 : 200;
 
-            if (!isDeleting && letterIndex === currentWord.length) {
-                setTimeout(() => isDeleting = true, 1000); // 暂停一秒后开始删除
-            } else if (isDeleting && letterIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % wordsArray.length; // 切换到下一个词
+            if (!isDeletingPrimary && letterIndexPrimary === currentWord.length) {
+                setTimeout(() => isDeletingPrimary = true, 1000);
+            } else if (isDeletingPrimary && letterIndexPrimary === 0) {
+                isDeletingPrimary = false;
+                wordIndexPrimary = (wordIndexPrimary + 1) % primaryWords.length;
             }
 
-            setTimeout(() => typeEffect(elementId, wordsArray, delay), speed);
+            setTimeout(typeEffectPrimary, speedPrimary);
+        }
+
+        // 副标题打字效果
+        function typeEffectSecondary() {
+            const element = document.getElementById("typewriter-secondary");
+            const currentWord = secondaryWords[wordIndexSecondary];
+
+            if (isDeletingSecondary) {
+                element.textContent = currentWord.substring(0, letterIndexSecondary--);
+            } else {
+                element.textContent = currentWord.substring(0, letterIndexSecondary++);
+            }
+
+            const speedSecondary = isDeletingSecondary ? 50 : 200;
+
+            if (!isDeletingSecondary && letterIndexSecondary === currentWord.length) {
+                setTimeout(() => isDeletingSecondary = true, 1000);
+            } else if (isDeletingSecondary && letterIndexSecondary === 0) {
+                isDeletingSecondary = false;
+                wordIndexSecondary = (wordIndexSecondary + 1) % secondaryWords.length;
+            }
+
+            setTimeout(typeEffectSecondary, speedSecondary);
         }
 
         // 初始化打字效果
         document.addEventListener("DOMContentLoaded", () => {
-            typeEffect("typewriter-primary", primaryWords, 0);
-            setTimeout(() => typeEffect("typewriter-secondary", secondaryWords, 2000), 500); // 延迟副标题出现
+            typeEffectPrimary();
+            setTimeout(typeEffectSecondary, 2000); // 延迟副标题的打字效果
         });
     </script>
 </body>
