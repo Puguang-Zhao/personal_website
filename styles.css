@@ -1,12 +1,12 @@
 /* 样式美化：通用 */
 body, html {
     height: 100%;
-    width: 100%; /* 添加宽度 */
+    width: 100%;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     color: #333;
-    overflow-x: hidden; /* 防止出现水平滚动条 */
+    overflow-x: hidden;
 }
 
 /* 页头和页脚 */
@@ -87,22 +87,20 @@ nav ul li a:hover, nav ul li a.active {
 
 /* 主内容区域 */
 .container {
-    width: 100%; /* 设置宽度为 100%，覆盖整个页面宽度 */
-    max-width: none; /* 取消最大宽度限制 */
-    margin: 0; /* 移除自动居中效果 */
+    width: 100%;
+    max-width: 1200px; /* 限制最大宽度 */
+    margin: 0 auto;
     padding: 20px;
     padding-top: 80px;
     min-height: calc(100vh - 120px);
     box-sizing: border-box;
 }
 
-
 /* 首页背景图片透明层 */
-/* 调整容器，使背景图片全屏覆盖 */
 .index-page .hero {
     position: relative;
     height: 100vh;
-    width: 100vw; /* 设置宽度为视口宽度 */
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,13 +108,12 @@ nav ul li a:hover, nav ul li a.active {
     overflow: hidden;
 }
 
-/* 确保背景图片覆盖整个页面 */
 .index-page .hero::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw; /* 宽度覆盖整个视口 */
+    width: 100vw;
     height: 100vh;
     background: url('药大背景.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -131,12 +128,10 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 /* 副标题样式 */
-/* 副标题样式 - 超大字体，渐变色 */
-/* 副标题样式 - 超大字体，渐变色 */
 #typewriter-text {
-    font-size: 5em; /* 增大字体 */
+    font-size: 5em;
     font-weight: bold;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffdd93); /* 渐变色 */
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffdd93);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
@@ -144,29 +139,35 @@ nav ul li a:hover, nav ul li a.active {
     overflow: hidden;
 }
 
-
-
-
 /* 卡片布局样式 */
 .resume-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 增加最小宽度为 350px */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 增大最小宽度 */
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
-    max-width: 1200px; /* 增加最大宽度限制，避免内容过宽 */
+    max-width: 1200px;
 }
-
 
 .card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 25px;
     color: #333;
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.1em; /* 增大字体 */
+}
+
+/* 错落效果 */
+.card:nth-child(odd) {
+    transform: translateY(10px); /* 使奇数卡片稍微向下偏移 */
+}
+
+.card:nth-child(even) {
+    transform: translateY(-10px); /* 使偶数卡片稍微向上偏移 */
 }
 
 /* 渐变装饰背景 */
@@ -191,10 +192,9 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 .card p, .card ul {
-    font-size: 1.1em; /* 增大卡片内容字体 */
+    font-size: 1.15em;
     line-height: 1.6;
 }
-
 
 .card h3 {
     font-size: 1.2em;
@@ -202,26 +202,14 @@ nav ul li a:hover, nav ul li a.active {
     color: #333;
 }
 
-
-
 .card ul {
     padding-left: 20px;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(0) scale(1.02);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-
-#卡片错落排列
-.card:nth-child(odd) {
-    transform: translateY(10px); /* 使奇数卡片稍微向下偏移 */
-}
-
-.card:nth-child(even) {
-    transform: translateY(-10px); /* 使偶数卡片稍微向上偏移 */
-}
-
 
 /* 移动设备上的调整 */
 @media (max-width: 768px) {
@@ -232,7 +220,7 @@ nav ul li a:hover, nav ul li a.active {
 
     .card {
         padding: 15px;
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
     .card h2 {
