@@ -124,8 +124,9 @@ nav ul li a:hover, nav ul li a.active {
 
 /* 副标题样式 */
 /* 副标题样式 - 超大字体，渐变色 */
+/* 副标题样式 - 超大字体，渐变色 */
 #typewriter-text {
-    font-size: 4em; /* 增大字体 */
+    font-size: 5em; /* 增大字体 */
     font-weight: bold;
     background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffdd93); /* 渐变色 */
     -webkit-background-clip: text;
@@ -133,9 +134,8 @@ nav ul li a:hover, nav ul li a.active {
     color: transparent;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 0.1em solid rgba(255, 255, 255, 0.75); /* 边框闪烁效果 */
-    animation: typing 4s steps(30, end) infinite alternate, blink 0.75s step-end infinite;
 }
+
 
 /* 打字效果和闪烁 */
 @keyframes typing {

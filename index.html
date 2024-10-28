@@ -43,43 +43,39 @@
     <script src="script.js"></script>
 
     <script>
-        // 打字效果配置
-        const secondaryWords = ["It is easy to say but hard to do"];
-        const typeSpeeds = { typing: 150, deleting: 100, delay: 1500 }; // 打字与删除速度配置
+        // 单行打字效果
+        const text = "It is easy to say but hard to do"; // 需要展示的文本
+        const typeSpeeds = { typing: 150, deleting: 100, delay: 1500 };
 
-        // 通用打字效果函数
-        function typeEffect(elementId, words, speedConfig, delay = 0) {
+        // 启动打字效果
+        function typeWriter(elementId, text, speedConfig) {
             const element = document.getElementById(elementId);
-            let wordIndex = 0;
             let letterIndex = 0;
             let isDeleting = false;
 
             function type() {
-                const currentWord = words[wordIndex];
-                if (isDeleting) {
-                    element.textContent = currentWord.substring(0, letterIndex--);
-                } else {
-                    element.textContent = currentWord.substring(0, letterIndex++);
+                if (element) {
+                    element.textContent = text.substring(0, letterIndex);
+                    if (!isDeleting && letterIndex < text.length) {
+                        letterIndex++;
+                    } else if (isDeleting && letterIndex > 0) {
+                        letterIndex--;
+                    } else {
+                        isDeleting = !isDeleting;
+                        setTimeout(type, speedConfig.delay);
+                        return;
+                    }
+
+                    const speed = isDeleting ? speedConfig.deleting : speedConfig.typing;
+                    setTimeout(type, speed);
                 }
-
-                const speed = isDeleting ? speedConfig.deleting : speedConfig.typing;
-
-                if (!isDeleting && letterIndex === currentWord.length) {
-                    setTimeout(() => isDeleting = true, speedConfig.delay); // 等待后开始删除
-                } else if (isDeleting && letterIndex === 0) {
-                    isDeleting = false;
-                    wordIndex = (wordIndex + 1) % words.length;
-                }
-
-                setTimeout(type, speed);
             }
 
-            setTimeout(type, delay); // 设置初始延迟
+            type();
         }
 
-        // 初始化打字效果
         document.addEventListener("DOMContentLoaded", () => {
-            typeEffect("typewriter-text", secondaryWords, typeSpeeds, 2000); // 仅显示副标题
+            typeWriter("typewriter-text", text, typeSpeeds);
         });
     </script>
 </body>
