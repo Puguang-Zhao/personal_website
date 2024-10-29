@@ -151,14 +151,28 @@ nav ul li a:hover, nav ul li a.active {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: bold;
     background: linear-gradient(90deg, #1a5ff5, #469afa, #49ceef);
-    background-clip: text;  /* 添加标准属性 */
+    background-clip: text; /* 添加标准属性 */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
-    display: inline-block; /* 保持居中 */
+    display: inline-block;
     text-align: center;
-    transform: translateX(-35%); /* 向左平移 5% 或根据需要调整 */
-    margin-left: -500px; /* 向左偏移的距离，根据需要调整 */
+    width: 0; /* 初始宽度为 0 */
+    overflow: hidden; /* 超出部分隐藏 */
+    animation: typing 4s steps(30, end) forwards; /* 打字动画 */
+    position: relative; /* 使位置可调 */
+    left: 50%; /* 从中间开始 */
+    transform: translateX(-50%); /* 水平居中对齐 */
+}
+
+/* 打字效果关键帧 */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100vw; /* 最终宽度扩展至屏幕宽度 */
+    }
 }
 
 
