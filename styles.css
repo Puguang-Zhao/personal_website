@@ -157,8 +157,8 @@ nav ul li a:hover, nav ul li a.active {
     white-space: nowrap;
     display: inline-block; /* 保持居中 */
     text-align: center;
-    transform: translateX(-25%); /* 向左平移 5% 或根据需要调整 */
-    margin-left: -50px; /* 向左偏移的距离，根据需要调整 */
+    transform: translateX(-35%); /* 向左平移 5% 或根据需要调整 */
+    margin-left: -500px; /* 向左偏移的距离，根据需要调整 */
 }
 
 
