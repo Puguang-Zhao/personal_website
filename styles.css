@@ -193,7 +193,6 @@ nav ul li a:hover, nav ul li a.active {
     transform: translateY(-80px);
 }
 
-
 .card::before {
     content: "";
     position: absolute;
@@ -257,4 +256,44 @@ nav ul li a:hover, nav ul li a.active {
 .contact-info {
     font-size: 1.5em;
     font-weight: bold;
+}
+
+
+/* 科研成果页面的卡片布局 */
+.projects-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 科研成果页面的单独卡片样式 */
+.project-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    color: #333;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 科研项目标题样式 */
+.project-card h2 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.project-card p, .project-card .research-item {
+    font-size: 1.15em;
+    line-height: 1.6;
+}
+
+/* 鼠标悬停效果 */
+.project-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
