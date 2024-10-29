@@ -143,19 +143,20 @@ nav ul li a:hover, nav ul li a.active {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
-    max-width: 90%; /* 限制最大宽度 */
-    padding: 0 20px; /* 添加内边距 */
+    max-width: 90%;
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
 #typewriter-text {
-    font-size: clamp(2rem, 4vw, 3.5rem); /* 设置字体大小 */
+    font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: bold;
     background: linear-gradient(90deg, #1a5ff5, #469afa, #49ceef);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
     display: inline-block; /* 保持居中 */
+    text-align: center;
 }
 
 

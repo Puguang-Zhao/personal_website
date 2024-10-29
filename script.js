@@ -108,6 +108,7 @@ function startTypewriterEffect() {
 }
 
 // 通用的打字效果函数
+// 打字效果函数
 function typeWriter(elementId, text) {
     const typewriterElement = document.getElementById(elementId);
     let letterIndex = 0;
@@ -115,21 +116,24 @@ function typeWriter(elementId, text) {
 
     function type() {
         if (typewriterElement) {
-            typewriterElement.textContent = text.substring(0, letterIndex);
-            if (!isDeleting && letterIndex < text.length) {
-                letterIndex++;
-            } else if (isDeleting && letterIndex > 0) {
-                letterIndex--;
+            if (!isDeleting) {
+                typewriterElement.textContent = text.substring(0, letterIndex++);
+                if (letterIndex === text.length) {
+                    setTimeout(() => isDeleting = true, 1500);
+                }
             } else {
-                isDeleting = !isDeleting;
-                setTimeout(type, 1500); // 停顿时间
-                return;
+                typewriterElement.textContent = text.substring(0, letterIndex--);
+                if (letterIndex < 0) {
+                    isDeleting = false;
+                    letterIndex = 0;
+                    setTimeout(type, 1000);
+                    return;
+                }
             }
-
             const speed = isDeleting ? 100 : 150;
             setTimeout(type, speed);
         }
     }
 
-    type();
+    type(); // 开始打字效果
 }
