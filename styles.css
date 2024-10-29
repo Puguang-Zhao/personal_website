@@ -139,19 +139,24 @@ nav ul li a:hover, nav ul li a.active {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
-    width: 100%; /* 确保文本容器宽度为100% */
-    max-width: 100%; /* 避免文本溢出 */
-    padding: 0 20px; /* 添加内边距，确保在小屏幕上文本不会贴边 */
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    width: 100%;
+    max-width: 100%; /* 防止溢出 */
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
 #typewriter-text {
-    font-size: calc(2em + 2vw); /* 使用视口宽度单位动态调整字体大小 */
+    font-size: calc(2em + 2vw); /* 使用视口宽度单位以适应不同屏幕尺寸 */
     font-weight: bold;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffdd93);
+    background: linear-gradient(90deg, #1a5ff5, #469afa, #49ceef);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
+    overflow-wrap: break-word; /* 确保在小屏幕上不溢出 */
+    text-align: center;
 }
 
 .resume-cards {
