@@ -152,12 +152,13 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
     background-image: repeating-linear-gradient(
         90deg,
-        #ff7e5f,
-        #feb47b 10%,
-        #ffdd93 20%,
-        #1a5ff5 30%,
-        #469afa 40%,
-        #49ceef 50%
+        #ff4b5c, /* 红色 */
+        #ff914d 15%,
+        #ffd166 30%,
+        #06d6a0 45%,
+        #118ab2 60%,
+        #8338ec 75%,
+        #ff006e 90%
     ); /* 每个字母颜色变化 */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
