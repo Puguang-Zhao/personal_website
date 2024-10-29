@@ -148,7 +148,7 @@ nav ul li a:hover, nav ul li a.active {
     max-width: 1200px;
 }
 
-/* 水平和垂直错落效果 */
+/* 锯齿状排列效果 */
 .card {
     background-color: #fff;
     border-radius: 8px;
@@ -161,26 +161,15 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 1.1em;
 }
 
-/* 每张卡片的特定错落位置 */
-.card:nth-child(1) {
-    transform: translateY(20px);
+/* 奇数卡片向右上偏移，偶数卡片向左下偏移 */
+.card:nth-child(odd) {
+    transform: translate(20px, -20px); /* 向右上偏移 */
 }
 
-.card:nth-child(2) {
-    transform: translateY(-20px) translateX(20px);
+.card:nth-child(even) {
+    transform: translate(-20px, 20px); /* 向左下偏移 */
 }
 
-.card:nth-child(3) {
-    transform: translateY(40px) translateX(-20px);
-}
-
-.card:nth-child(4) {
-    transform: translateY(-40px) translateX(20px);
-}
-
-.card:nth-child(5) {
-    transform: translateY(20px) translateX(-20px);
-}
 
 
 .card::before {
