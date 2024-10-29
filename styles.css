@@ -151,6 +151,7 @@ nav ul li a:hover, nav ul li a.active {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: bold;
     background: linear-gradient(90deg, #1a5ff5, #469afa, #49ceef);
+    background-clip: text;  /* 添加标准属性 */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
