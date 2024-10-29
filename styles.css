@@ -132,7 +132,6 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 /* Hero text 的样式 */
-/* Hero text 的样式 */
 .hero-text {
     display: flex;
     justify-content: center;
@@ -157,6 +156,7 @@ nav ul li a:hover, nav ul li a.active {
     white-space: nowrap;
     display: inline-block; /* 保持居中 */
     text-align: center;
+    transform: translateX(-10%); /* 向左平移 5% 或根据需要调整 */
 }
 
 
