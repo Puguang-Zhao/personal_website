@@ -37,6 +37,7 @@ header {
     line-height: 50px;
     background-color: transparent !important; /* 强制透明背景 */
     box-shadow: none; /* 移除阴影效果 */
+    transition: transform 0.3s ease; /* 平滑过渡效果 */
 }
 
 /* 主内容区域，增加顶部和底部间距 */

@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', () => {
         handleScroll();
         handleTitleZoom();
+        handleNavbarVisibility(); // 调用导航栏隐藏/显示函数
     });
 
     // 仅在首页执行打字效果
@@ -81,6 +82,24 @@ function handleTitleZoom() {
     }
 }
 
+// 导航栏滚动隐藏/显示功能
+let lastScrollPosition = 0;
+
+function handleNavbarVisibility() {
+    const navbar = document.querySelector('header');
+    const currentScrollPosition = window.pageYOffset;
+
+    if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+        // 向下滚动并超过一定距离，隐藏导航栏
+        navbar.style.transform = "translateY(-100%)";
+    } else if (currentScrollPosition < lastScrollPosition) {
+        // 向上滚动，显示导航栏
+        navbar.style.transform = "translateY(0)";
+    }
+
+    lastScrollPosition = currentScrollPosition;
+}
+
 // 单行打字效果函数
 function startTypewriterEffect() {
     const text = "It is easy to say but hard to do"; // 需要展示的文本
@@ -122,4 +141,3 @@ function typeWriter(elementId, text) {
 
     type(); // 开始打字效果
 }
-
