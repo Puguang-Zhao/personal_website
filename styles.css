@@ -139,7 +139,7 @@ nav ul li a:hover, nav ul li a.active {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-60%, -50%); /* 向左偏移10% */
     text-align: center;
     z-index: 2;
     max-width: 90%; /* 限制最大宽度 */
