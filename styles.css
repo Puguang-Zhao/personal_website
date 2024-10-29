@@ -158,7 +158,7 @@ nav ul li a:hover, nav ul li a.active {
     text-align: center;
     overflow: hidden; /* 超出部分隐藏 */
     position: absolute; /* 使位置可调 */
-    left: 55%; /* 从中间开始 */
+    left: 50%; /* 从中间开始 */
     transform: translateX(-65%); /* 水平居中对齐 */
     animation: initialize 0.1s ease forwards, typing 4s steps(30, end) 0.1s forwards; /* 初始化和打字动画 */
 }
