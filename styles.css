@@ -161,8 +161,8 @@ nav ul li a:hover, nav ul li a.active {
     overflow: hidden; /* 超出部分隐藏 */
     animation: typing 4s steps(30, end) forwards; /* 打字动画 */
     position: relative; /* 使位置可调 */
-    left: 50%; /* 从中间开始 */
-    transform: translateX(-75%); /* 水平居中对齐 */
+    left: 70%; /* 从中间开始 */
+    transform: translateX(-70%); /* 水平居中对齐 */
 }
 
 /* 打字效果关键帧 */
