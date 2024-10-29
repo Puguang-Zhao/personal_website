@@ -133,9 +133,13 @@ nav ul li a:hover, nav ul li a.active {
 
 /* Hero text 的样式 */
 .hero-text {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
+    width: 100%;
 }
 
 #typewriter-text {
