@@ -10,11 +10,11 @@ body, html {
     overflow-y: auto; /* 允许垂直滚动 */
 }
 
-/* 主内容区域，允许滚动 */
+/* 主内容区域，增加顶部和底部间距 */
 .container {
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
+    margin: 80px auto 40px auto; /* 顶部和底部留出空间，防止被遮挡 */
     padding: 20px;
     box-sizing: border-box;
 }
