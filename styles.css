@@ -143,20 +143,19 @@ nav ul li a:hover, nav ul li a.active {
     text-align: center;
     z-index: 2;
     max-width: 90%; /* 限制最大宽度 */
-    padding: 0 20px;
+    padding: 0 20px; /* 内边距，防止文本贴边 */
     box-sizing: border-box;
-    font-size: calc(2em + 1vw); /* 使用相对单位以适应不同屏幕尺寸 */
 }
 
-
 #typewriter-text {
-    font-size: calc(2em + 2vw); /* 使用视口宽度单位动态调整字体大小 */
+    font-size: clamp(2rem, 4vw, 3.5rem); /* 设置最小2rem，最大3.5rem，自动调整 */
     font-weight: bold;
     background: linear-gradient(90deg, #1a5ff5, #469afa, #49ceef);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
 }
+
 
 
 .resume-cards {
