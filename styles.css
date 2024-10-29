@@ -1,16 +1,18 @@
 /* 样式美化：通用 */
-/* 确保页面主体没有任何边距和填充 */
-* {
+body, html {
     margin: 0;
     padding: 0;
+    min-height: 100vh; /* 确保页面最小高度为视口高度 */
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-}
+
 
 /* 标题样式 */
 #site-title {
@@ -99,30 +101,34 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
 }
 
-/* 设置全屏背景图片和布局 */
+/* 首页背景图片透明层，支持全屏显示 */
+
 .index-page .hero {
     position: relative;
-    width: 100vw; /* 设置宽度为视口宽度 */
-    height: 100vh; /* 设置高度为视口高度 */
+    width: 100vw; /* 确保宽度为视口宽度 */
+    height: 100vh; /* 确保高度为视口高度 */
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     overflow: hidden;
+    margin: 0; /* 去掉任何多余的间距 */
+    padding: 0; /* 去掉任何多余的内边距 */
+    box-sizing: border-box;
 }
 
-/* 确保背景图片全屏并居中 */
+/* 使用伪元素添加背景图片并设置为全屏 */
 .index-page .hero::before {
     content: "";
-    position: absolute;
+    position: fixed; /* 将背景固定 */
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100vw; /* 确保宽度为视口宽度 */
+    height: 100vh; /* 确保高度为视口高度 */
     background: url('药大背景.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-size: cover; /* 确保背景图片覆盖整个区域 */
     opacity: 0.3;
-    z-index: -1;
+    z-index: -1; /* 确保在文本下方 */
 }
 
 /* Hero text 的样式 */
