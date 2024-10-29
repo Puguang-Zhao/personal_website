@@ -1,12 +1,11 @@
 /* 样式美化：通用 */
+/* 保证页面不偏移并覆盖全屏 */
 body, html {
-    height: 100%;
-    width: 100%;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
-    overflow-x: hidden; /* 防止水平滚动 */
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -100,16 +99,17 @@ nav ul li a:hover, nav ul li a.active {
 /* 首页背景图片透明层，支持全屏显示 */
 .index-page .hero {
     position: relative;
-    width: 100vw; /* 宽度为视口宽度 */
-    height: 100vh; /* 高度为视口高度 */
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     overflow: hidden;
+    margin: 0; /* 去掉多余的间距 */
 }
 
-/* 使用伪元素添加背景图片并设置透明度 */
+/* 使用伪元素添加背景图片并设置为全屏 */
 .index-page .hero::before {
     content: "";
     position: absolute;
@@ -118,7 +118,7 @@ nav ul li a:hover, nav ul li a.active {
     width: 100%;
     height: 100%;
     background: url('药大背景.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-size: cover; /* 确保背景图片覆盖整个区域 */
     opacity: 0.3;
     z-index: -1;
 }
