@@ -156,13 +156,18 @@ nav ul li a:hover, nav ul li a.active {
     white-space: nowrap;
     display: inline-block;
     text-align: center;
-    overflow: hidden;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-71%);
-    width: 100vw; /* 直接设置宽度 */
-    opacity: 1; /* 直接设为可见 */
-    animation: typing 4s steps(30, end) forwards; /* 仅打字动画 */
+    overflow: hidden; /* 超出部分隐藏 */
+    position: absolute; /* 使位置可调 */
+    left: calc(50% - 15px); /* 初始向左偏移 */
+    transform: translateX(-71%); /* 初始微调位置 */
+    animation: initialize 0.1s ease forwards, typing 4s steps(30, end) 0.1s forwards; /* 初始化和打字动画 */
+}
+
+/* 初始化宽度的动画 */
+@keyframes initialize {
+    to {
+        width: 100vw; /* 初始化宽度确保文本居中 */
+    }
 }
 
 /* 打字效果关键帧 */
@@ -171,7 +176,7 @@ nav ul li a:hover, nav ul li a.active {
         width: 0;
     }
     to {
-        width: 100vw;
+        width: 100vw; /* 最终宽度扩展至屏幕宽度 */
     }
 }
 
