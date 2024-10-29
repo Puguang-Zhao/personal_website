@@ -1,4 +1,4 @@
-/* 使用 flex 布局来确保页脚固定在底部 */
+/* 样式美化：通用 */
 body, html {
     height: 100%;
     width: 100%;
@@ -10,18 +10,20 @@ body, html {
     flex-direction: column;
 }
 
-/* 主内容区域，增加顶部和底部间距 */
-.container {
-    max-width: 1200px;
+/* 标题样式 */
+#site-title {
+    font-size: 2em;
+    text-align: center;
+    background-color: rgba(51, 51, 51, 0.9);
+    color: white;
+    padding: 15px 0;
+    position: fixed; /* 固定在顶部 */
     width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    padding-top: 80px; /* 为内容区域增加顶部内边距，避免与固定导航栏重叠 */
-    flex: 1; /* 使内容区域填满剩余空间 */
+    top: 0;
+    z-index: 1001; /* 使其位于导航栏之上 */
 }
 
-/* 页头和页脚 */
+/* 导航栏位置和样式 */
 header {
     background-color: #333;
     color: white;
@@ -29,10 +31,21 @@ header {
     padding: 15px;
     position: fixed;
     width: 100%;
-    top: 0;
+    top: 50px; /* 调整位置以确保在标题下方 */
     z-index: 1000;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
+}
+
+/* 主内容区域，增加顶部和底部间距 */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-top: 130px; /* 确保内容不会被导航栏和标题遮挡 */
+    flex: 1;
 }
 
 /* 页脚样式 */
@@ -44,17 +57,7 @@ footer {
     width: 100%;
     position: relative;
     bottom: 0;
-    margin-top: 20px; /* 增加内容与页脚的间距 */
-}
-
-/* 页面顶部的标题样式 */
-#site-title {
-    font-size: 2em;
-    text-align: center;
-    background-color: rgba(51, 51, 51, 0.9);
-    color: white;
-    padding: 15px 0;
-    z-index: 1000;
+    margin-top: 20px;
 }
 
 /* 导航栏样式 */
@@ -92,7 +95,7 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
 }
 
-/* 首页背景图片透明层，支持滚动 */
+/* 其他样式保持不变 */
 .index-page .hero {
     position: relative;
     width: 100%;
@@ -101,7 +104,7 @@ nav ul li a:hover, nav ul li a.active {
     justify-content: center;
     color: white;
     overflow: hidden;
-    min-height: 100vh; /* 允许内容超出视口高度 */
+    min-height: 100vh;
 }
 
 .index-page .hero::before {
@@ -123,7 +126,6 @@ nav ul li a:hover, nav ul li a.active {
     z-index: 2;
 }
 
-/* 副标题样式 */
 #typewriter-text {
     font-size: 5em;
     font-weight: bold;
@@ -133,7 +135,6 @@ nav ul li a:hover, nav ul li a.active {
     white-space: nowrap;
 }
 
-/* 卡片布局样式 */
 .resume-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -155,16 +156,14 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 1.1em;
 }
 
-/* 错落效果 */
 .card:nth-child(odd) {
-    transform: translateY(50px); /* 将错落效果调整至较小的偏移 */
+    transform: translateY(50px);
 }
 
 .card:nth-child(even) {
-    transform: translateY(-50px); /* 同上 */
+    transform: translateY(-50px);
 }
 
-/* 渐变装饰背景 */
 .card::before {
     content: "";
     position: absolute;
@@ -178,7 +177,6 @@ nav ul li a:hover, nav ul li a.active {
     pointer-events: none;
 }
 
-/* 卡片标题和内容样式 */
 .card h2 {
     font-size: 1.8em;
     color: #007bff;
@@ -205,7 +203,6 @@ nav ul li a:hover, nav ul li a.active {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* 移动设备上的调整 */
 @media (max-width: 768px) {
     .resume-cards {
         grid-template-columns: 1fr;
@@ -226,7 +223,6 @@ nav ul li a:hover, nav ul li a.active {
     }
 }
 
-/* 联系方式字体调整 */
 .contact-info {
     font-size: 1.5em;
     font-weight: bold;
