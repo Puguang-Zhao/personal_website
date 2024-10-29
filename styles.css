@@ -160,20 +160,12 @@ nav ul li a:hover, nav ul li a.active {
     position: absolute;
     left: 50%;
     transform: translateX(-71%);
-    animation: initialize 0.1s ease forwards, typing 4s steps(30, end) 0.1s forwards;
-    opacity: 0; /* 初始透明度 */
-    animation-fill-mode: forwards; /* 保持动画结束状态 */
+    width: 100vw; /* 直接设置宽度 */
+    opacity: 1; /* 直接设为可见 */
+    animation: typing 4s steps(30, end) forwards; /* 仅打字动画 */
 }
 
-/* 初始化宽度和透明度 */
-@keyframes initialize {
-    to {
-        width: 100vw;
-        opacity: 1; /* 设置为可见 */
-    }
-}
-
-/* 打字效果 */
+/* 打字效果关键帧 */
 @keyframes typing {
     from {
         width: 0;
@@ -182,6 +174,7 @@ nav ul li a:hover, nav ul li a.active {
         width: 100vw;
     }
 }
+
 
 
 /* 光标闪烁效果 */
