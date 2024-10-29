@@ -97,15 +97,19 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 /* 其他样式保持不变 */
+/* 首页背景图片透明层，支持全屏显示 */
 .index-page .hero {
     position: relative;
     width: 100%;
+    height: 100vh; /* 设置高度为视口高度 */
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     overflow: hidden;
-    min-height: 100vh;
+    background: url('药大背景.jpg') no-repeat center center fixed; /* 背景图片居中并固定 */
+    background-size: cover; /* 背景图片覆盖整个区域 */
+    z-index: -1; /* 将背景图片层级设置较低 */
 }
 
 .index-page .hero::before {
