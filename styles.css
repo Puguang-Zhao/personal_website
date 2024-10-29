@@ -149,17 +149,16 @@ nav ul li a:hover, nav ul li a.active {
     max-width: 1200px;
 }
 
-/* 卡片布局：自定义位置 */
+/* 个人介绍页面的卡片样式 */
 .card {
-    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff; /* 初始为白色 */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 25px;
     color: #333;
-    position: relative;
-    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-size: 1.1em;
 }
 
 /* 为每个卡片指定位置 */
@@ -193,6 +192,7 @@ nav ul li a:hover, nav ul li a.active {
     transform: translateY(-80px);
 }
 
+/* 为卡片添加初始透明的伪元素 */
 .card::before {
     content: "";
     position: absolute;
@@ -200,10 +200,21 @@ nav ul li a:hover, nav ul li a.active {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(173, 216, 230, 0.2), rgba(255, 250, 205, 0.2));
+    background: rgba(255, 255, 255, 0); /* 初始为透明 */
+    transition: background 0.3s ease; /* 渐变过渡效果 */
     z-index: -1;
-    pointer-events: none;
+    border-radius: 8px;
+}
+
+/* 鼠标悬停时，伪元素背景变为淡淡的彩色 */
+.card:hover::before {
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(173, 216, 230, 0.2), rgba(255, 250, 205, 0.2));
+}
+
+/* 鼠标悬停放大效果 */
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card h2 {
@@ -227,11 +238,7 @@ nav ul li a:hover, nav ul li a.active {
     padding-left: 20px;
 }
 
-/* 鼠标悬停效果 */
-.card:hover {
-    transform: translateX(0) translateY(0) scale(1.02); /* 取消错落并放大 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+
 
 @media (max-width: 768px) {
     .resume-cards {
