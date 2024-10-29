@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<body>
     <!-- 固定在页面顶部的标题 -->
     <div id="site-title">ZPGuang</div>
 
@@ -19,19 +20,91 @@
                 <li><a href="projects.html"><i class="fas fa-project-diagram"></i> 科研经历</a></li>
                 <li><a href="knowledge.html" class="active"><i class="fas fa-book"></i> 随笔</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> 联系我</a></li>
-                
             </ul>
         </nav>
     </header>
+
     <main class="container">
         <section id="knowledge">
-
+            <h2>学习笔记</h2>
+            <!-- 文件上传 -->
+            <input type="file" id="file-input" accept=".md, .txt" onchange="uploadFile()" />
+            
+            <!-- 目录显示 -->
+            <section id="table-of-contents">
+                <h3>目录</h3>
+                <ul id="toc-list"></ul>
+            </section>
+            
+            <!-- 文件内容显示 -->
+            <section id="file-content-section">
+                <h3>文件内容</h3>
+                <div id="file-content"></div>
+            </section>
         </section>
     </main>
+    
     <footer>
         <p>&copy; <span id="year"></span> Guang. All rights reserved.</p>
         <p>当前时间：<span id="datetime"></span></p>
     </footer>
     <script src="script.js"></script>
+    
+    <script>
+        // 文件上传并生成目录
+        function uploadFile() {
+            const fileInput = document.getElementById("file-input");
+            const fileContentSection = document.getElementById("file-content");
+            const tocList = document.getElementById("toc-list");
+
+            if (fileInput.files.length === 0) {
+                alert("请选择一个文件！");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const content = event.target.result;
+                fileContentSection.innerHTML = ""; // 清空内容
+                tocList.innerHTML = ""; // 清空目录
+
+                const lines = content.split("\n");
+                lines.forEach((line, index) => {
+                    // 解析 Markdown 标题
+                    const match = line.match(/^(#+)\s*(.+)/);
+                    if (match) {
+                        const headingLevel = match[1].length; // 标题级别
+                        const headingText = match[2];
+                        const headingId = `heading-${index}`;
+
+                        // 创建标题并插入到内容区域
+                        const headingElement = document.createElement(`h${Math.min(headingLevel + 1, 6)}`);
+                        headingElement.textContent = headingText;
+                        headingElement.id = headingId;
+                        fileContentSection.appendChild(headingElement);
+
+                        // 生成目录项链接
+                        const tocItem = document.createElement("li");
+                        tocItem.innerHTML = `<a href="#${headingId}">${headingText}</a>`;
+                        tocItem.style.paddingLeft = `${(headingLevel - 1) * 15}px`;
+                        tocList.appendChild(tocItem);
+                    } else {
+                        // 普通段落文本
+                        const paragraph = document.createElement("p");
+                        paragraph.textContent = line;
+                        fileContentSection.appendChild(paragraph);
+                    }
+                });
+            };
+
+            reader.onerror = function() {
+                alert("文件读取失败！");
+            };
+
+            reader.readAsText(file); // 读取文件内容
+        }
+    </script>
 </body>
 </html>

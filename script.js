@@ -14,16 +14,11 @@ document.addEventListener("DOMContentLoaded", function() {
     updateDateTime();
     setInterval(updateDateTime, 1000);
 
-    // 如果需要加载 Markdown 文件内容，确保 loadMarkdown 函数存在
-    if (typeof loadMarkdown === 'function') {
-        loadMarkdown();
-    }
-
     // 滚动时修改导航栏和标题的样式
     window.addEventListener('scroll', () => {
         handleScroll();
         handleTitleZoom();
-        handleNavbarVisibility(); // 调用导航栏隐藏/显示函数
+        handleNavbarVisibility();
     });
 
     // 仅在首页执行打字效果
@@ -108,7 +103,6 @@ function startTypewriterEffect() {
 }
 
 // 通用的打字效果函数
-// 打字效果函数
 function typeWriter(elementId, text) {
     const typewriterElement = document.getElementById(elementId);
     let letterIndex = 0;
@@ -136,4 +130,59 @@ function typeWriter(elementId, text) {
     }
 
     type(); // 开始打字效果
+}
+
+// 文件上传并生成目录
+function uploadFile() {
+    const fileInput = document.getElementById("file-input");
+    const fileContentSection = document.getElementById("file-content");
+    const tocList = document.getElementById("toc-list");
+
+    if (fileInput.files.length === 0) {
+        alert("请选择一个文件！");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const content = event.target.result;
+        fileContentSection.innerHTML = ""; // 清空内容
+        tocList.innerHTML = ""; // 清空目录
+
+        const lines = content.split("\n");
+        lines.forEach((line, index) => {
+            // 解析 Markdown 标题
+            const match = line.match(/^(#+)\s*(.+)/);
+            if (match) {
+                const headingLevel = match[1].length; // 标题级别
+                const headingText = match[2];
+                const headingId = `heading-${index}`;
+
+                // 创建标题并插入到内容区域
+                const headingElement = document.createElement(`h${Math.min(headingLevel + 1, 6)}`);
+                headingElement.textContent = headingText;
+                headingElement.id = headingId;
+                fileContentSection.appendChild(headingElement);
+
+                // 生成目录项链接
+                const tocItem = document.createElement("li");
+                tocItem.innerHTML = `<a href="#${headingId}">${headingText}</a>`;
+                tocItem.style.paddingLeft = `${(headingLevel - 1) * 15}px`;
+                tocList.appendChild(tocItem);
+            } else {
+                // 普通段落文本
+                const paragraph = document.createElement("p");
+                paragraph.textContent = line;
+                fileContentSection.appendChild(paragraph);
+            }
+        });
+    };
+
+    reader.onerror = function() {
+        alert("文件读取失败！");
+    };
+
+    reader.readAsText(file); // 读取文件内容
 }
