@@ -25,7 +25,6 @@ body, html {
 
 /* 导航栏位置和样式 */
 header {
-    background-color: #333;
     color: white;
     text-align: center;
     padding: 15px;
@@ -35,6 +34,8 @@ header {
     z-index: 1000;
     height: 50px;
     line-height: 50px;
+    background-color: transparent; /* 设置背景为透明 */
+    box-shadow: none; /* 移除阴影效果 */
 }
 
 /* 主内容区域，增加顶部和底部间距 */
@@ -67,7 +68,6 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: flex-end;
-    background-color: #f4f4f4;
     padding-right: 20px;
 }
 
