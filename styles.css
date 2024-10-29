@@ -141,14 +141,14 @@ nav ul li a:hover, nav ul li a.active {
 
 .resume-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
     max-width: 1200px;
 }
 
-/* 卡片布局：水平和垂直错落效果 */
+/* 水平和垂直错落效果 */
 .card {
     background-color: #fff;
     border-radius: 8px;
@@ -161,14 +161,27 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 1.1em;
 }
 
-/* 同时应用水平和垂直错落效果 */
-.card:nth-child(odd) {
-    transform: translateX(30px) translateY(30px); /* 向右下方偏移 */
+/* 每张卡片的特定错落位置 */
+.card:nth-child(1) {
+    transform: translateY(20px);
 }
 
-.card:nth-child(even) {
-    transform: translateX(-30px) translateY(-30px); /* 向左上方偏移 */
+.card:nth-child(2) {
+    transform: translateY(-20px) translateX(20px);
 }
+
+.card:nth-child(3) {
+    transform: translateY(40px) translateX(-20px);
+}
+
+.card:nth-child(4) {
+    transform: translateY(-40px) translateX(20px);
+}
+
+.card:nth-child(5) {
+    transform: translateY(20px) translateX(-20px);
+}
+
 
 .card::before {
     content: "";
