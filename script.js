@@ -115,29 +115,21 @@ function typeWriter(elementId, text) {
 
     function type() {
         if (typewriterElement) {
-            if (!isDeleting) {
-                // 打字逻辑
-                typewriterElement.textContent = text.substring(0, letterIndex++);
-                if (letterIndex === text.length) {
-                    // 打完后停留 1.5 秒再删除
-                    setTimeout(() => isDeleting = true, 1500);
-                }
+            typewriterElement.textContent = text.substring(0, letterIndex);
+            if (!isDeleting && letterIndex < text.length) {
+                letterIndex++;
+            } else if (isDeleting && letterIndex > 0) {
+                letterIndex--;
             } else {
-                // 删除逻辑
-                typewriterElement.textContent = text.substring(0, letterIndex--);
-                if (letterIndex < 0) {
-                    // 删除完后停留 1 秒再重新开始打字
-                    isDeleting = false;
-                    letterIndex = 0;
-                    setTimeout(type, 1000);
-                    return;
-                }
+                isDeleting = !isDeleting;
+                setTimeout(type, 1500); // 停顿时间
+                return;
             }
-            // 设置打字和删除的速度
+
             const speed = isDeleting ? 100 : 150;
             setTimeout(type, speed);
         }
     }
 
-    type(); // 开始打字效果
+    type();
 }
