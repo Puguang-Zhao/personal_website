@@ -131,21 +131,21 @@ nav ul li a:hover, nav ul li a.active {
     z-index: -1; /* 确保在文本下方 */
 }
 
+/* Hero text 的样式 */
 .hero-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: 50%;      /* 纵向居中 */
-    left: 50%;     /* 横向居中 */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
-    max-width: 90%; /* 限制最大宽度，防止文字溢出 */
+    max-width: 90%; /* 限制最大宽度 */
+    padding: 0 20px;
     box-sizing: border-box;
-    font-size: calc(2em + 2vw); /* 使用视口单位调整字体大小 */
-    font-weight: bold;
-    background: linear-gradient(90deg, #1a5ff5, #469afa, #49ceef);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    white-space: nowrap;
+    font-size: calc(2em + 1vw); /* 使用相对单位以适应不同屏幕尺寸 */
 }
 
 
@@ -157,6 +157,7 @@ nav ul li a:hover, nav ul li a.active {
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
 }
+
 
 .resume-cards {
     display: grid;
