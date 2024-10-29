@@ -284,10 +284,10 @@ nav ul li a:hover, nav ul li a.active {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 182, 193, 0), rgba(173, 216, 230, 0), rgba(255, 250, 205, 0));
-    border-radius: 8px;
-    z-index: -1;
+    background: rgba(255, 255, 255, 0); /* 初始为透明 */
     transition: background 0.3s ease; /* 渐变过渡效果 */
+    z-index: -1;
+    border-radius: 8px;
 }
 
 /* 鼠标悬停时，伪元素背景变为淡淡的彩色 */
