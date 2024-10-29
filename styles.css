@@ -7,6 +7,7 @@ body, html {
     font-family: Arial, sans-serif;
     color: #333;
     overflow-x: hidden; /* 防止水平滚动 */
+    overflow-y: auto; /* 允许垂直滚动 */
 }
 
 /* 主内容区域，允许滚动 */
@@ -155,11 +156,11 @@ nav ul li a:hover, nav ul li a.active {
 
 /* 错落效果 */
 .card:nth-child(odd) {
-    transform: translateY(100px);
+    transform: translateY(50px); /* 将错落效果调整至较小的偏移 */
 }
 
 .card:nth-child(even) {
-    transform: translateY(-100px);
+    transform: translateY(-50px); /* 同上 */
 }
 
 /* 渐变装饰背景 */
