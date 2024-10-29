@@ -142,14 +142,14 @@ nav ul li a:hover, nav ul li a.active {
 
 .resume-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 两列布局 */
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
     max-width: 1200px;
 }
 
-/* 锯齿状排列效果 */
+/* 卡片布局：自定义位置 */
 .card {
     background-color: #fff;
     border-radius: 8px;
@@ -162,15 +162,36 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 1.1em;
 }
 
-/* 奇数卡片向右上偏移，偶数卡片向左下偏移 */
-.card:nth-child(odd) {
-    transform: translate(20px, -20px); /* 向右上偏移 */
+/* 为每个卡片指定位置 */
+.card:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    transform: translateY(0px);
 }
 
-.card:nth-child(even) {
-    transform: translate(-20px, 20px); /* 向左下偏移 */
+.card:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    transform: translateY(-20px); /* 调整垂直偏移 */
 }
 
+.card:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    transform: translateY(-40px);
+}
+
+.card:nth-child(4) {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    transform: translateY(-60px);
+}
+
+.card:nth-child(5) {
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+    transform: translateY(-80px);
+}
 
 
 .card::before {
