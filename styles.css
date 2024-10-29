@@ -159,7 +159,7 @@ nav ul li a:hover, nav ul li a.active {
     overflow: hidden;
     position: absolute;
     left: calc(60%); /* 调整偏移值，确保从中间开始 */
-    transform: translateX(-81%);
+    transform: translateX(-71%);
     width: 0; /* 初始宽度为0 */
     animation: typing 4s steps(30, end) forwards; /* 打字动画 */
 }
