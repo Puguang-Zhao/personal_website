@@ -1,13 +1,16 @@
 /* 样式美化：通用 */
-/* 保证页面不偏移并覆盖全屏 */
-body, html {
+/* 确保页面主体没有任何边距和填充 */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
 }
-
 
 /* 标题样式 */
 #site-title {
@@ -96,32 +99,32 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
 }
 
-/* 首页背景图片透明层，支持全屏显示 */
+/* 设置全屏背景图片和布局 */
 .index-page .hero {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100vw; /* 设置宽度为视口宽度 */
+    height: 100vh; /* 设置高度为视口高度 */
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     overflow: hidden;
-    margin: 0; /* 去掉多余的间距 */
 }
 
-/* 使用伪元素添加背景图片并设置为全屏 */
+/* 确保背景图片全屏并居中 */
 .index-page .hero::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: url('药大背景.jpg') no-repeat center center fixed;
-    background-size: cover; /* 确保背景图片覆盖整个区域 */
+    background-size: cover;
     opacity: 0.3;
     z-index: -1;
 }
+
 /* Hero text 的样式 */
 .hero-text {
     position: relative;
