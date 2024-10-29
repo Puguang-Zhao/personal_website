@@ -156,29 +156,33 @@ nav ul li a:hover, nav ul li a.active {
     white-space: nowrap;
     display: inline-block;
     text-align: center;
-    overflow: hidden; /* 超出部分隐藏 */
-    position: absolute; /* 使位置可调 */
-    left: 50%; /* 从中间开始 */
-    transform: translateX(-71%); /* 水平居中对齐 */
-    animation: initialize 0.1s ease forwards, typing 4s steps(30, end) 0.1s forwards; /* 初始化和打字动画 */
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-71%);
+    animation: initialize 0.1s ease forwards, typing 4s steps(30, end) 0.1s forwards;
+    opacity: 0; /* 初始透明度 */
+    animation-fill-mode: forwards; /* 保持动画结束状态 */
 }
 
-/* 初始化宽度的动画 */
+/* 初始化宽度和透明度 */
 @keyframes initialize {
     to {
-        width: 100vw; /* 初始化宽度确保文本居中 */
+        width: 100vw;
+        opacity: 1; /* 设置为可见 */
     }
 }
 
-/* 打字效果关键帧 */
+/* 打字效果 */
 @keyframes typing {
     from {
         width: 0;
     }
     to {
-        width: 100vw; /* 最终宽度扩展至屏幕宽度 */
+        width: 100vw;
     }
 }
+
 
 /* 光标闪烁效果 */
 @keyframes cursor-blink {
