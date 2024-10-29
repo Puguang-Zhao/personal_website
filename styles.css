@@ -150,7 +150,15 @@ nav ul li a:hover, nav ul li a.active {
 #typewriter-text {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: bold;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffdd93, #1a5ff5, #469afa, #49ceef); /* 彩色渐变 */
+    background-image: repeating-linear-gradient(
+        90deg,
+        #ff7e5f,
+        #feb47b 10%,
+        #ffdd93 20%,
+        #1a5ff5 30%,
+        #469afa 40%,
+        #49ceef 50%
+    ); /* 每个字母颜色变化 */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
@@ -158,9 +166,9 @@ nav ul li a:hover, nav ul li a.active {
     text-align: center;
     overflow: hidden;
     position: absolute;
-    left: calc(75%); /* 调整偏移值，确保从中间开始 */
+    left: 50%;
     transform: translateX(-71%);
-    width: 0; /* 初始宽度为0 */
+    width: 0; /* 初始宽度为 0 */
     animation: typing 4s steps(30, end) forwards; /* 打字动画 */
 }
 
@@ -170,7 +178,7 @@ nav ul li a:hover, nav ul li a.active {
         width: 0;
     }
     to {
-        width: 100vw; /* 最终宽度扩展至视口宽度 */
+        width: 100vw; /* 最终宽度扩展至屏幕宽度 */
     }
 }
 
