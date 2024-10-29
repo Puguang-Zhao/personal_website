@@ -148,6 +148,7 @@ nav ul li a:hover, nav ul li a.active {
     max-width: 1200px;
 }
 
+/* 卡片布局：水平和垂直错落效果 */
 .card {
     background-color: #fff;
     border-radius: 8px;
@@ -160,12 +161,13 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 1.1em;
 }
 
+/* 同时应用水平和垂直错落效果 */
 .card:nth-child(odd) {
-    transform: translateY(50px);
+    transform: translateX(30px) translateY(30px); /* 向右下方偏移 */
 }
 
 .card:nth-child(even) {
-    transform: translateY(-50px);
+    transform: translateX(-30px) translateY(-30px); /* 向左上方偏移 */
 }
 
 .card::before {
@@ -202,8 +204,9 @@ nav ul li a:hover, nav ul li a.active {
     padding-left: 20px;
 }
 
+/* 鼠标悬停效果 */
 .card:hover {
-    transform: translateY(0) scale(1.02);
+    transform: translateX(0) translateY(0) scale(1.02); /* 取消错落并放大 */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
