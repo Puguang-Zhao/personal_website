@@ -168,7 +168,7 @@ nav ul li a:hover, nav ul li a.active {
     overflow: hidden;
     position: absolute;
     left: 50%;
-    transform: translateX(-71%);
+    transform: translateX(-70%);
     width: 0; /* 初始宽度为 0 */
     animation: typing 4s steps(30, end) forwards; /* 打字动画 */
 }
