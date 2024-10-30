@@ -132,57 +132,62 @@ function typeWriter(elementId, text) {
     type(); // 开始打字效果
 }
 
-// 文件上传并生成目录
-function uploadFile() {
-    const fileInput = document.getElementById("file-input");
+// 动态加载指定的文件内容，并解析文件类型（Markdown, PDF）
+function loadContent(fileName) {
     const fileContentSection = document.getElementById("file-content");
-    const tocList = document.getElementById("toc-list");
+    fileContentSection.innerHTML = ""; // 清空当前内容
 
-    if (fileInput.files.length === 0) {
-        alert("请选择一个文件！");
-        return;
+    // 检查文件扩展名以确定文件类型
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+
+    if (fileExtension === "md") {
+        // 加载并解析 Markdown 文件
+        fetch(fileName)
+            .then(response => {
+                if (!response.ok) throw new Error("文件加载失败");
+                return response.text();
+            })
+            .then(markdown => {
+                // 使用 marked.js 库将 Markdown 转换为 HTML
+                const htmlContent = marked.parse(markdown);
+                fileContentSection.innerHTML = htmlContent;
+                generateTOC(htmlContent); // 自动生成目录
+            })
+            .catch(error => alert("Markdown 文件加载失败: " + error));
+    } else if (fileExtension === "pdf") {
+        // 加载并渲染 PDF 文件
+        const loadingTask = pdfjsLib.getDocument(fileName);
+        loadingTask.promise
+            .then(pdf => {
+                let pdfText = "";
+                const totalPages = pdf.numPages;
+
+                // 遍历每一页并提取文本
+                for (let i = 1; i <= totalPages; i++) {
+                    pdf.getPage(i).then(page => {
+                        page.getTextContent().then(textContent => {
+                            pdfText += textContent.items.map(item => item.str).join(" ") + "\n";
+                            fileContentSection.innerText = pdfText; // 显示解析的 PDF 内容
+
+                            if (i === totalPages) {
+                                generateTOC(pdfText); // PDF 内容提取完成后生成目录
+                            }
+                        });
+                    });
+                }
+            })
+            .catch(error => alert("PDF 文件加载失败: " + error));
+    } else {
+        // 加载并直接显示 HTML 文件
+        fetch(fileName)
+            .then(response => {
+                if (!response.ok) throw new Error("文件加载失败");
+                return response.text();
+            })
+            .then(content => {
+                fileContentSection.innerHTML = content;
+                generateTOC(content); // 自动生成目录
+            })
+            .catch(error => alert("HTML 文件加载失败: " + error));
     }
-
-    const file = fileInput.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function(event) {
-        const content = event.target.result;
-        fileContentSection.innerHTML = ""; // 清空内容
-        tocList.innerHTML = ""; // 清空目录
-
-        const lines = content.split("\n");
-        lines.forEach((line, index) => {
-            // 解析 Markdown 标题
-            const match = line.match(/^(#+)\s*(.+)/);
-            if (match) {
-                const headingLevel = match[1].length; // 标题级别
-                const headingText = match[2];
-                const headingId = `heading-${index}`;
-
-                // 创建标题并插入到内容区域
-                const headingElement = document.createElement(`h${Math.min(headingLevel + 1, 6)}`);
-                headingElement.textContent = headingText;
-                headingElement.id = headingId;
-                fileContentSection.appendChild(headingElement);
-
-                // 生成目录项链接
-                const tocItem = document.createElement("li");
-                tocItem.innerHTML = `<a href="#${headingId}">${headingText}</a>`;
-                tocItem.style.paddingLeft = `${(headingLevel - 1) * 15}px`;
-                tocList.appendChild(tocItem);
-            } else {
-                // 普通段落文本
-                const paragraph = document.createElement("p");
-                paragraph.textContent = line;
-                fileContentSection.appendChild(paragraph);
-            }
-        });
-    };
-
-    reader.onerror = function() {
-        alert("文件读取失败！");
-    };
-
-    reader.readAsText(file); // 读取文件内容
 }

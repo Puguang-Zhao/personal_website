@@ -379,71 +379,92 @@ nav ul li a:hover, nav ul li a.active {
     line-height: 1.6;
 }
 
-/* 文件上传按钮的样式 */
-.upload-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1em;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.upload-btn:hover {
-    background-color: #0056b3;
-}
-
-/* 文件列表容器的样式 */
-.file-list {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-/* 文件条目样式 */
-.file-item {
-    margin: 10px 0;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: 1em;
-    color: #333;
-}
-
-.file-item:last-child {
-    border-bottom: none;
-}
-
-/* 标题样式 */
-.file-item h1 {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #007bff;
-}
-
-.file-item h2 {
-    font-size: 1.3em;
-    font-weight: bold;
-    color: #0056b3;
-}
-
-.file-item h3 {
-    font-size: 1.1em;
-    color: #333;
-}
-
-/* 文件内容的样式 */
-.file-content {
+/* 动态加载的内容展示区域 */
+#file-content {
     font-size: 1em;
     line-height: 1.6;
     color: #333;
+    padding: 20px;
+    background-color: #f9f9f9; /* 设置淡色背景与页面分隔 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加阴影以突出内容 */
+}
+
+/* 为内容标题添加样式，保持一致 */
+#file-content h1, #file-content h2, #file-content h3, #file-content h4 {
+    color: #007bff;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* 设置段落的间距 */
+#file-content p {
+    margin-bottom: 15px;
+}
+
+/* 列表样式 */
+#file-content ul, #file-content ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* 表格样式 */
+#file-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#file-content table th, #file-content table td {
     padding: 10px;
-    background-color: #fefefe;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* 图片样式，确保加载的图片适应容器 */
+#file-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* 引用块样式 */
+#file-content blockquote {
+    border-left: 4px solid #007bff;
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+    margin: 20px 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* 代码块样式 */
+#file-content pre, #file-content code {
+    background-color: #f4f4f4;
+    padding: 10px;
     border-radius: 5px;
-    margin-top: 10px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.95em;
+    overflow-x: auto;
+}
+
+/* 代码块外层的 pre 标签样式 */
+#file-content pre {
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+/* 链接样式 */
+#file-content a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#file-content a:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
